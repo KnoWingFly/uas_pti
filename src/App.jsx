@@ -1,7 +1,6 @@
 import React from 'react';
 import Nav from './Component/Nav.jsx';
 import Header from './Component/Header.jsx';
-import './App.css';
 
 function App() {
   return (

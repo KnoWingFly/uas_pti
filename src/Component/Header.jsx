@@ -2,43 +2,68 @@ import React, { useState, useEffect } from 'react';
 import TobaLake from '../img/lake_toba.jpg';
 import muaratapanuli from '../img/Muara_Tapanuli.jpg';
 
-
 const places = [
     { name: 'Danau Toba', image: TobaLake },
     { name: 'Muara Tapanuli Utara', image: muaratapanuli }
-  ];
+];
 
-  function Header() {
+function Header() {
     const [currentPlaceIndex, setCurrentPlaceIndex] = useState(0);
     const [isChanging, setIsChanging] = useState(false);
-  
+
     useEffect(() => {
-      const timer = setInterval(() => {
+        const timer = setInterval(() => {
+            setIsChanging(true);
+            setTimeout(() => {
+                setCurrentPlaceIndex((currentPlaceIndex + 1) % places.length);
+                setIsChanging(false);
+            }, 1000); // Transition duration
+        }, 5000);
+        return () => clearInterval(timer); // Clean up the timer
+    }, [currentPlaceIndex]);
+
+    const nextPlace = () => {
         setIsChanging(true);
         setTimeout(() => {
-          setCurrentPlaceIndex((currentPlaceIndex + 1) % places.length);
-          setIsChanging(false);
+            setCurrentPlaceIndex((currentPlaceIndex + 1) % places.length);
+            setIsChanging(false);
         }, 1000); // Transition duration
-      }, 5000);
-      return () => clearInterval(timer); // Clean up the timer
-    }, [currentPlaceIndex]);
-  
+    };
+
+    const prevPlace = () => {
+        setIsChanging(true);
+        setTimeout(() => {
+            setCurrentPlaceIndex((currentPlaceIndex - 1 + places.length) % places.length);
+            setIsChanging(false);
+        }, 1000); // Transition duration
+    };
+
     return(
         <div className="relative h-3/4">
-        <div className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out ${isChanging ? 'opacity-0' : 'opacity-100'}`} style={{backgroundImage: `url(${places[currentPlaceIndex].image})`}} />
-        <div className="relative h-full flex flex-col justify-between">
-        <div className="p-4 flex justify-center">
-          <div className="flex items-center p-2 rounded-full bg-white text-black w-1/2">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-            <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-          </svg>
-            <input 
-              type="text" 
-              placeholder="Where can we take you?" 
-              className="bg-transparent w-full outline-none ml-2"
-            />
-          </div>
-        </div>
+            <div className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out ${isChanging ? 'opacity-0' : 'opacity-100'}`} style={{backgroundImage: `url(${places[currentPlaceIndex].image})`}} />
+            <div className="relative h-full flex flex-col justify-between">
+                <div className="p-4 flex justify-center">
+                    <div className="flex items-center p-2 rounded-full bg-white text-black w-1/2">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                        </svg>
+                        <input 
+                            type="text" 
+                            placeholder="Where can we take you?" 
+                            className="bg-transparent w-full outline-none ml-2"
+                        />
+                    </div>
+                    <button onClick={prevPlace} className="absolute left-0 top-1/2 transform -translate-y-1/2">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M21 16.811c0 .864-.933 1.406-1.683.977l-7.108-4.061a1.125 1.125 0 0 1 0-1.954l7.108-4.061A1.125 1.125 0 0 1 21 8.689v8.122ZM11.25 16.811c0 .864-.933 1.406-1.683.977l-7.108-4.061a1.125 1.125 0 0 1 0-1.954l7.108-4.061a1.125 1.125 0 0 1 1.683.977v8.122Z" />
+                        </svg>
+                    </button>
+                    <button onClick={nextPlace} className="absolute right-0 top-1/2 transform -translate-y-1/2">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M3 8.689c0-.864.933-1.406 1.683-.977l7.108 4.061a1.125 1.125 0 0 1 0 1.954l-7.108 4.061A1.125 1.125 0 0 1 3 16.811V8.69ZM12.75 8.689c0-.864.933-1.406 1.683-.977l7.108 4.061a1.125 1.125 0 0 1 0 1.954l-7.108 4.061a1.125 1.125 0 0 1-1.683-.977V8.69Z" />
+                        </svg>
+                    </button>
+                </div>
 
 
           <div className="p-4">
