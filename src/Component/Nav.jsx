@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MenuIcon } from '@heroicons/react/outline';
-
 
 const navigation = [
   { name: 'Gallery', href: '#', current: true },
@@ -11,9 +10,7 @@ const navigation = [
   { name: 'Blog', href: '#', current: false }
 ];
 
-function Nav() {
-  const [isOpen, setIsOpen] = useState(false);
-
+function Nav({isOpen, setIsOpen}) {
   return (
     <div className={`${isOpen ? 'pointer-events-none' : ''}`}>
       <button
@@ -37,14 +34,18 @@ function Nav() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ x: '-100%' }}
-            animate={{ x: 0 }}
-            exit={{ x: '-100%' }}
-            transition={{ type: 'spring', stiffness: 120 }}
-            className="fixed top-0 left-0 h-full w-64 bg-black text-white p-8 z-50"
-          >
+          initial={{ x: '-100%' }}
+          animate={{ x: 0 }}
+          exit={{ x: '-100%' }}
+          transition={{ 
+            type: 'spring', 
+            damping: 20, // Increase damping for less springiness
+            stiffness: 120,
+            ease: "easeInOut" // ease-in-out transition for smoother animation
+          }}
+          className="fixed top-0 left-0 h-full w-64 bg-black text-white p-8 z-50"
+         >
             <div className="flex flex-col space-y-4">
-            
               {navigation.map((item) => (
                 <motion.a
                   key={item.name}

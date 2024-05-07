@@ -12,7 +12,7 @@ const places = [
     { name: 'Pulau Samosir', image: samosir }
 ];
 
-function Header() {
+function Header({isOpen}) {
     const [currentPlaceIndex, setCurrentPlaceIndex] = useState(0);
     const bgRef = useRef(null);
     const textRef = useRef(null);
@@ -41,14 +41,17 @@ function Header() {
 
     return(
         <div className="relative min-h-[75vh]">
+        {isOpen ? null : (
             <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-1/3 mt-10 z-50">
-                <div className="flex items-center bg-white rounded-full p-2 shadow-md">
+                <div className={`flex items-center bg-white rounded-full p-2 shadow-md`}>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 mr-3 text-gray-500">
                         <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
                     </svg>
-                    <input className="bg-transparent outline-none flex-grow text-black" type="text" placeholder="Where can we take you?"/>
+                    <input className="bg-transparent outline-none flex-grow text-black" type="text" placeholder="Where can we take you?" readOnly={isOpen}/>
                 </div>
             </div>
+        )}
+
             <div className="relative min-h-[75vh] flex flex-col justify-center items-start">
                 <div ref={bgRef} className={`absolute inset-0 bg-cover bg-center`} style={{backgroundImage: `url(${places[currentPlaceIndex].image})`}} />
             <div className="p-4 absolute bottom-0 left-0 text-left">
