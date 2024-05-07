@@ -1,10 +1,14 @@
 import React from 'react';
 import TobaLake from '../img/lake_toba.jpg';
 import muaratapanuli from '../img/Muara_Tapanuli.jpg';
+import lumbinipark from '../img/taman-alam-lumbini.jpg';
+import samosir from '../img/samosir.jpg';
 
 const places = [
     { name: 'Danau Toba', image: TobaLake },
-    { name: 'Muara Tapanuli Utara', image: muaratapanuli }
+    { name: 'Muara Tapanuli Utara', image: muaratapanuli },
+    { name: 'Taman Alam Lumbini', image: lumbinipark },
+    { name: 'Pulau Samosir', image: samosir }
 ];
 
 const Card = () => {
