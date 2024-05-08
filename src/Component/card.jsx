@@ -3,8 +3,8 @@ import TobaLake from '../img/lake_toba.jpg';
 import muaratapanuli from '../img/Muara_Tapanuli.jpg';
 import samosir from '../img/samosir.jpg';
 import holbung from '../img/bukit-holbung.png';
-import gerejaLondon from '../img/Gereja-London-Sumatera.png';
-import maimun from '../img/Istana-maimun.png';
+import gerejaLondon from '../img/Gedung-London-Sumatera.png';
+import maimun from '../img/Istana_maimun.png';
 import sibolangit from '../img/Hillpark-Sibolangit.png';
 import sorake from '../img/pantai-sorake.png';
 import maitreya from '../img/Vihara_Maitreya.png';
@@ -16,12 +16,12 @@ const places = [
     { name: 'Muara Tapanuli Utara', image: muaratapanuli},
     { name: 'Pulau Samosir', image: samosir},
     { name: 'Bukit Holbung', image: holbung},
-    { name: 'Gereja London Sumatera', image: gerejaLondon},
+    { name: 'Gedung London Sumatera', image: gerejaLondon},
     { name: 'Istana Maimun', image: maimun},
     { name: 'Hillpark Sibolangit', image: sibolangit},
     { name: 'Pantai Sorake', image: sorake},
     { name: 'Vihara Maitreya', image: maitreya},
-    { name: 'Masjid Al Mashun', image: maitreya}
+    { name: 'Masjid Al Mashun', image: mashun}
 ];
 
 const Card = () => {
