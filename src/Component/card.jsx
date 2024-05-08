@@ -1,16 +1,27 @@
 import React from 'react';
 import TobaLake from '../img/lake_toba.jpg';
 import muaratapanuli from '../img/Muara_Tapanuli.jpg';
-import nias from '../img/nias.jpg';
-import Tanjung_Buntu from '../img/Pantai_Tanjung_Buntu.jpeg';
-import Laut_Tawar from '../img/Laut_Tawar.jpg';
+import samosir from '../img/samosir.jpg';
+import holbung from '../img/bukit-holbung.png';
+import gerejaLondon from '../img/Gereja-London-Sumatera.png';
+import maimun from '../img/Istana-maimun.png';
+import sibolangit from '../img/Hillpark-Sibolangit.png';
+import sorake from '../img/pantai-sorake.png';
+import maitreya from '../img/Vihara_Maitreya.png';
+import mashun from '../img/Masjid_Al_Mashun.png';
+
 
 const places = [
     { name: 'Danau Toba', image: TobaLake},
     { name: 'Muara Tapanuli Utara', image: muaratapanuli},
-    { name: 'Pulau Nias', image: nias},
-    { name: 'Pantai Tanjung Buntu', image: Tanjung_Buntu},
-    { name: 'Laut Tawar', image: Laut_Tawar}
+    { name: 'Pulau Samosir', image: samosir},
+    { name: 'Bukit Holbung', image: holbung},
+    { name: 'Gereja London Sumatera', image: gerejaLondon},
+    { name: 'Istana Maimun', image: maimun},
+    { name: 'Hillpark Sibolangit', image: sibolangit},
+    { name: 'Pantai Sorake', image: sorake},
+    { name: 'Vihara Maitreya', image: maitreya},
+    { name: 'Masjid Al Mashun', image: maitreya}
 ];
 
 const Card = () => {
