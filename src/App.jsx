@@ -8,7 +8,7 @@ function App() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="App bg-black min-h-screen text-white">
+    <div className="App bg-white min-h-screen text-white">
       <Nav isOpen={isOpen} setIsOpen={setIsOpen}/>
       <Header isOpen={isOpen}/>
       <Card />

@@ -29,9 +29,9 @@ const Card = () => {
         <div className="flex flex-wrap justify-between mt-20 mx-60">
             {places.map((place, index) => (
 
-                <div key={index} className="relative w-60 h-80 rounded shadow-lg m-2 overflow-hidden group">
+                <div key={index} className="relative w-60 h-80 rounded shadow-lg m-2 overflow-hidden group bg-black">
                     
-                    <img className="w-full h-full object-cover rounded transition duration-300 group-hover:opacity-50 scale-100 group-hover:scale-110 ease-in-out" src={place.image} alt={place.name} />
+                    <img className="w-full h-full object-cover rounded transition duration-300 group-hover:opacity-50 scale-100 group-hover:scale-105 ease-in-out" src={place.image} alt={place.name} />
 
                     <p className="opacity-0 group-hover:opacity-100 duration-300 absolute inset-0 flex justify-center items-start text-white font-semibold pt-5">{place.shortDesc}</p>
 

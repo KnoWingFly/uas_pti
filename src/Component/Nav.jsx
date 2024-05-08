@@ -18,7 +18,7 @@ function Nav({isOpen, setIsOpen}) {
         onClick={() => setIsOpen(!isOpen)}
         className="fixed top-0 right-0 m-4 z-50"
       >
-        <MenuIcon className="h-6 w-6 text-white" />
+        <MenuIcon className="h-8 w-12 p-1 border border-white rounded-md bg-black/50 item-xl text-white" />
       </button>
       <AnimatePresence>
         {isOpen && (
@@ -44,22 +44,22 @@ function Nav({isOpen, setIsOpen}) {
             stiffness: 120,
             ease: "easeInOut" 
           }}
-          className="fixed top-0 left-0 h-full w-64 bg-black text-white p-8 z-50"
+          className="fixed top-0 left-0 h-full w-64 bg-slate-300/75 text-black p-8 z-50"
          >
             <div className="flex flex-col space-y-4">
             {navigation.map((item) => (
               <motion.a
               key={item.name}
               href={item.href}
-              className={`text-xl ${item.current ? 'font-bold' : ''} hover:text-gray-300`}
+              className={`text-xl ${item.current ? 'font-bold' : ''} hover:text-black`}
               initial={{ x: 50, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: 50, opacity: 0 }}
               transition={{ delay: 0.2 }}
               whileHover={{ 
                 scale: 1.1, 
-                color: "#ff0000", 
-                transition: { duration: 0.2 } 
+                color: "#099e2c", 
+                transition: { duration: 0.2 },
               }}
               onClick={(e) => e.stopPropagation()} 
             >
