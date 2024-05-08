@@ -4,18 +4,19 @@ import { MenuIcon } from '@heroicons/react/outline';
 
 const navigation = [
   { name: 'Gallery', href: '#', current: true },
-  { name: 'Discover', href: '#', current: false },
+  { name: 'Discover', href: '', current: false },
   { name: 'Templates', href: '#', current: false },
   { name: 'Updates', href: '#', current: false },
   { name: 'Blog', href: '#', current: false }
 ];
 
+
 function Nav({isOpen, setIsOpen}) {
   return (
-    <div className={`${isOpen ? 'pointer-events-none' : ''}`}>
+    <div>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed top-0 right-0 m-4 z-50 pointer-events-auto"
+        className="fixed top-0 right-0 m-4 z-50"
       >
         <MenuIcon className="h-6 w-6 text-white" />
       </button>
@@ -39,26 +40,33 @@ function Nav({isOpen, setIsOpen}) {
           exit={{ x: '-100%' }}
           transition={{ 
             type: 'spring', 
-            damping: 20, // Increase damping for less springiness
+            damping: 20, 
             stiffness: 120,
-            ease: "easeInOut" // ease-in-out transition for smoother animation
+            ease: "easeInOut" 
           }}
           className="fixed top-0 left-0 h-full w-64 bg-black text-white p-8 z-50"
          >
             <div className="flex flex-col space-y-4">
-              {navigation.map((item) => (
-                <motion.a
-                  key={item.name}
-                  href={item.href}
-                  className={`text-xl ${item.current ? 'font-bold' : ''} hover:text-gray-300`}
-                  initial={{ x: 50, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  exit={{ x: 50, opacity: 0 }}
-                  transition={{ delay: 0.2 }}
-                >
-                  {item.name}
-                </motion.a>
-              ))}
+            {navigation.map((item) => (
+              <motion.a
+              key={item.name}
+              href={item.href}
+              className={`text-xl ${item.current ? 'font-bold' : ''} hover:text-gray-300`}
+              initial={{ x: 50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: 50, opacity: 0 }}
+              transition={{ delay: 0.2 }}
+              whileHover={{ 
+                scale: 1.1, 
+                color: "#ff0000", 
+                transition: { duration: 0.2 } 
+              }}
+              onClick={(e) => e.stopPropagation()} 
+            >
+              {item.name}
+            </motion.a>
+
+        ))}
             </div>
           </motion.div>
         )}
@@ -66,5 +74,6 @@ function Nav({isOpen, setIsOpen}) {
     </div>
   );
 }
+
 
 export default Nav;
