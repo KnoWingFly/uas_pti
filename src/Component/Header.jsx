@@ -43,19 +43,19 @@ function Header({ isOpen }) {
         <div className="relative min-h-[75vh]">
             {isOpen ? null : (
                 <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-1/3 mt-10 z-50">
-                    <div className="flex items-center bg-white/30 rounded-full border border-8 border-double border-white/75 p-2 shadow-2xl">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 mr-3 text-black">
+                    <div className="flex items-center bg-black/70 backdrop-blur-md rounded-full border border-8 border-double border-white/75 p-2 shadow-2xl">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 mr-3 text-white">
                             <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
                         </svg>
-                        <input className="bg-transparent outline-none flex-grow text-black placeholder-black" type="text" placeholder="Where can we take you?" readOnly={isOpen} />
+                        <input className="bg-transparent outline-none flex-grow text-white placeholder-white" type="text" placeholder="Where can we take you?" readOnly={isOpen} />
                     </div>
                 </div>
             )}
             <div className="relative min-h-[75vh] flex flex-col justify-center items-start">
                 <div ref={bgRef} className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${places[currentPlaceIndex].image})` }} />
                 <div className="p-4 absolute bottom-0 left-0 text-left">
-                    <h1 ref={discoverRef} className="text-2xl font-semibold text-white">Discover your next vacation</h1>
-                    <div ref={textRef} className="p-2 rounded-full inline-flex items-center relative scale-100 opacity-100">
+                    <h1 ref={discoverRef} className="text-2xl font-semibold text-white mb-2 ms-1">Discover your next vacation</h1>
+                    <div ref={textRef} className="p-2 backdrop-blur-md rounded-full inline-flex border border-4 border-white items-center relative scale-100 opacity-100 px-5 pe-7">
                         <div className="absolute inset-0 bg-black opacity-50 rounded-full"></div>
                         <div className="relative z-10 flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 mr-2">

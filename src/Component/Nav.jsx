@@ -16,7 +16,7 @@ function Nav({isOpen, setIsOpen}) {
     <div>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed top-0 right-0 m-4 z-50"
+        className="fixed top-0 right-0 m-4 z-50 backdrop-blur-md"
       >
         <MenuIcon className="h-8 w-12 p-1 border border-white rounded-md bg-black/50 item-xl text-white" />
       </button>
