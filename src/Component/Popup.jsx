@@ -1,38 +1,45 @@
-// Popup.jsx
-import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import MapComponent from "./Map.jsx";
-import axios from 'axios';
+import axios from "axios";
 
-const Popup = ({ isOpen, setIsOpen, selectedPlace, currentPage, handleNext, handlePrevious }) => {
+const Popup = ({
+  isOpen,
+  setIsOpen,
+  selectedPlace,
+  currentPage,
+  handleNext,
+  handlePrevious,
+}) => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(false); // new state for loading
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    setIsLoading(true); // set loading to true when starting the API call
-    const apiKey = '939d69c9-d9b4-519a-2b1f-a34bef6c';
-    const searchQuery = selectedPlace.name; 
+    setIsLoading(true);
+    const apiKey = "939d69c9-d9b4-519a-2b1f-a34bef6c";
+    const searchQuery = selectedPlace.name;
     const apiUrl = `https://api.goapi.io/places?search=${encodeURIComponent(searchQuery)}&api_key=${apiKey}`;
 
-    axios.get(apiUrl, {
-      headers: {
-        'accept': 'application/json',
-        'X-API-KEY': apiKey
-      }
-    })
-      .then(response => {
+    axios
+      .get(apiUrl, {
+        headers: {
+          accept: "application/json",
+          "X-API-KEY": apiKey,
+        },
+      })
+      .then((response) => {
         const { lat, lng } = response.data.data.results[0];
         setData({ position: [lat, lng] });
         console.log(`Latitude: ${lat}, Longitude: ${lng}`);
-        setIsLoading(false); // set loading to false when the API call is successful
+        setIsLoading(false);
       })
-      .catch(error => {
-        console.error('Error:', error);
+      .catch((error) => {
+        console.error("Error:", error);
         setError(error);
-        setIsLoading(false); // set loading to false even if there is an error
+        setIsLoading(false);
       });
-  }, [selectedPlace]); 
+  }, [selectedPlace]);
 
   const totalPage = 3;
 
@@ -58,7 +65,7 @@ const Popup = ({ isOpen, setIsOpen, selectedPlace, currentPage, handleNext, hand
           animate={{ y: 0 }}
           exit={{ y: "100vh" }}
           className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-full sm:w-full h-full"
-          style={{ width: '1000px', height: '600px' }}
+          style={{ width: "1000px", height: "600px" }}
         >
           <button
             onClick={() => setIsOpen(false)}
@@ -69,18 +76,46 @@ const Popup = ({ isOpen, setIsOpen, selectedPlace, currentPage, handleNext, hand
           </button>
           <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4 flex h-full w-full">
             <div className="w-1/2 h-full overflow-auto">
-              <img className="w-full h-full object-cover rounded transition duration-300" src={selectedPlace.image} alt={selectedPlace.name} />
+              <img
+                className="w-full h-full object-cover rounded transition duration-300"
+                src={selectedPlace.image}
+                alt={selectedPlace.name}
+              />
             </div>
             <div className="w-1/2 h-full overflow-auto p-4">
-               {currentPage === 0 && <div><h2 className="text-lg leading-6 font-medium text-gray-900">Description</h2><p>{selectedPlace.description}</p></div>} 
-               {currentPage === 1 && <div><h2 className="text-lg leading-6 font-medium text-gray-900">Images</h2><p>{selectedPlace.moreImages}</p></div>} 
-               {currentPage === 2 && (
-                  isLoading 
-                    ? <div>Loading...</div> // show loading text when isLoading is true
-                    : data && data.position
-                      ? <div><h2 className="text-lg leading-6 font-medium text-gray-900">Map</h2><div className="h-full w-full"><MapComponent position={data.position} zoom={13} /></div></div>
-                      : <div className='text-black'>Mohon maaf, data map tempat ini belum ada.</div>
-                )}
+              {currentPage === 0 && (
+                <div>
+                  <h2 className="text-lg leading-6 font-medium text-gray-900">
+                    Description
+                  </h2>
+                  <p>{selectedPlace.description}</p>
+                </div>
+              )}
+              {currentPage === 1 && (
+                <div>
+                  <h2 className="text-lg leading-6 font-medium text-gray-900">
+                    Images
+                  </h2>
+                  <p>{selectedPlace.moreImages}</p>
+                </div>
+              )}
+              {currentPage === 2 &&
+                (isLoading ? (
+                  <div>Loading...</div>
+                ) : data && data.position ? (
+                  <div>
+                    <h2 className="text-lg leading-6 font-medium text-gray-900">
+                      Map
+                    </h2>
+                    <div className="h-full w-full">
+                      <MapComponent position={data.position} zoom={13} />
+                    </div>
+                  </div>
+                ) : (
+                  <div className="text-black">
+                    Mohon maaf, data map tempat ini belum ada.
+                  </div>
+                ))}
             </div>
 
             <div className="absolute bottom-0 right-0 m-4">
@@ -89,24 +124,24 @@ const Popup = ({ isOpen, setIsOpen, selectedPlace, currentPage, handleNext, hand
                   onClick={handlePrevious}
                   type="button"
                   className="inline-flex justify-center rounded-md border border-transparent px-4 py-2 bg-indigo-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition ease-in-out duration-150 sm:text-sm sm:leading-5 mr-2"
-                  >
-                    Previous
-                  </button>
-                )}
-                {currentPage < totalPage - 1 && (
-                  <button
-                    onClick={handleNext}
-                    type="button"
-                    className="inline-flex justify-center rounded-md border border-transparent px-4 py-2 bg-indigo-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition ease-in-out duration-150 sm:text-sm sm:leading-5"
-                  >
-                    Next
-                  </button>
-                )}
-              </div>
+                >
+                  Previous
+                </button>
+              )}
+              {currentPage < totalPage - 1 && (
+                <button
+                  onClick={handleNext}
+                  type="button"
+                  className="inline-flex justify-center rounded-md border border-transparent px-4 py-2 bg-indigo-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition ease-in-out duration-150 sm:text-sm sm:leading-5"
+                >
+                  Next
+                </button>
+              )}
             </div>
-          </motion.div>
-        </div>
-      </motion.div>
+          </div>
+        </motion.div>
+      </div>
+    </motion.div>
   );
 };
 

@@ -1,17 +1,16 @@
-import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { MenuIcon } from '@heroicons/react/outline';
+import React from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { MenuIcon } from "@heroicons/react/outline";
 
 const navigation = [
-  { name: 'Gallery', href: '#', current: true },
-  { name: 'Discover', href: '', current: false },
-  { name: 'Templates', href: '#', current: false },
-  { name: 'Updates', href: '#', current: false },
-  { name: 'Blog', href: '#', current: false }
+  { name: "Gallery", href: "#", current: true },
+  { name: "Discover", href: "", current: false },
+  { name: "Templates", href: "#", current: false },
+  { name: "Updates", href: "#", current: false },
+  { name: "Blog", href: "#", current: false },
 ];
 
-
-function Nav({isOpen, setIsOpen}) {
+function Nav({ isOpen, setIsOpen }) {
   return (
     <div>
       <button
@@ -35,38 +34,37 @@ function Nav({isOpen, setIsOpen}) {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-          initial={{ x: '-100%' }}
-          animate={{ x: 0 }}
-          exit={{ x: '-100%' }}
-          transition={{ 
-            type: 'spring', 
-            damping: 20, 
-            stiffness: 120,
-            ease: "easeInOut" 
-          }}
-          className="fixed top-0 left-0 h-full w-64 bg-slate-300/75 text-black p-8 z-50"
-         >
+            initial={{ x: "-100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "-100%" }}
+            transition={{
+              type: "spring",
+              damping: 20,
+              stiffness: 120,
+              ease: "easeInOut",
+            }}
+            className="fixed top-0 left-0 h-full w-64 bg-slate-300/75 text-black p-8 z-50"
+          >
             <div className="flex flex-col space-y-4">
-            {navigation.map((item) => (
-              <motion.a
-              key={item.name}
-              href={item.href}
-              className={`text-xl ${item.current ? 'font-bold' : ''} hover:text-black`}
-              initial={{ x: 50, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              exit={{ x: 50, opacity: 0 }}
-              transition={{ delay: 0.2 }}
-              whileHover={{ 
-                scale: 1.1, 
-                color: "#099e2c", 
-                transition: { duration: 0.2 },
-              }}
-              onClick={(e) => e.stopPropagation()} 
-            >
-              {item.name}
-            </motion.a>
-
-        ))}
+              {navigation.map((item) => (
+                <motion.a
+                  key={item.name}
+                  href={item.href}
+                  className={`text-xl ${item.current ? "font-bold" : ""} hover:text-black`}
+                  initial={{ x: 50, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  exit={{ x: 50, opacity: 0 }}
+                  transition={{ delay: 0.2 }}
+                  whileHover={{
+                    scale: 1.1,
+                    color: "#099e2c",
+                    transition: { duration: 0.2 },
+                  }}
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {item.name}
+                </motion.a>
+              ))}
             </div>
           </motion.div>
         )}
@@ -74,6 +72,5 @@ function Nav({isOpen, setIsOpen}) {
     </div>
   );
 }
-
 
 export default Nav;
