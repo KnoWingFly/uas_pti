@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import MapComponent from "./Map.jsx";
+import GoogleMapComponent from "./Gmap.jsx";
 import axios from "axios";
 
 const Popup = ({
@@ -12,8 +13,8 @@ const Popup = ({
   handlePrevious,
 }) => {
   const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [mapApi, setMapApi] = useState('GOAPI');
 
   useEffect(() => {
     setIsLoading(true);
@@ -36,7 +37,6 @@ const Popup = ({
       })
       .catch((error) => {
         console.error("Error:", error);
-        setError(error);
         setIsLoading(false);
       });
   }, [selectedPlace]);
@@ -99,23 +99,44 @@ const Popup = ({
                   <p>{selectedPlace.moreImages}</p>
                 </div>
               )}
-              {currentPage === 2 &&
-                (isLoading ? (
-                  <div>Loading...</div>
-                ) : data && data.position ? (
-                  <div>
-                    <h2 className="text-lg leading-6 font-medium text-gray-900">
-                      Map
-                    </h2>
-                    <div className="h-full w-full">
-                      <MapComponent position={data.position} zoom={13} />
-                    </div>
-                  </div>
-                ) : (
-                  <div className="text-black">
-                    Mohon maaf, data map tempat ini belum ada.
-                  </div>
-                ))}
+             {currentPage === 2 &&
+  (isLoading ? (
+    <div className="text-black">Loading...</div>
+  ) : (
+    <div>
+      <h2 className="text-lg leading-6 font-medium text-gray-900">
+        Map
+      </h2>
+      <div className="absolute top-0 right-0 m-4 flex space-x-4">
+          <button
+            className={`px-3 py-2 rounded-md text-sm font-medium focus:outline-none ${mapApi === 'GOAPI' ? 'bg-indigo-500 text-white' : 'text-gray-700 bg-white'}`}
+            onClick={() => setMapApi('GOAPI')}
+          >
+            GOAPI
+          </button>
+          <button
+            className={`px-3 py-2 rounded-md text-sm font-medium focus:outline-none ${mapApi === 'GMAP' ? 'bg-indigo-500 text-white' : 'text-gray-700 bg-white'}`}
+            onClick={() => setMapApi('GMAP')}
+          >
+            GMAP
+          </button>
+        </div>
+      <div className="h-full w-full">
+      {mapApi === 'GOAPI' ? (
+        data && data.position ? (
+          <MapComponent position={data.position} zoom={13} />
+        ) : (
+          <div className="text-black">
+            Mohon maaf, data map tempat ini belum ada.
+          </div>
+        )
+      ) : (
+        <GoogleMapComponent placeName={selectedPlace.name} />
+      )}
+      </div>
+    </div>
+  ))}
+
             </div>
 
             <div className="absolute bottom-0 right-0 m-4">
