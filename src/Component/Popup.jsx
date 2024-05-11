@@ -70,9 +70,13 @@ const Popup = ({
           <button
             onClick={() => setIsOpen(false)}
             type="button"
-            className="absolute top-0 right-0 m-2 inline-flex justify-center rounded-md border border-transparent px-2 py-1 bg-indigo-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition ease-in-out duration-150 sm:text-sm sm:leading-5"
+            className="absolute top-0 right-0 m-2 inline-flex justify-center"
           >
-            X
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-green-700 hover:text-green-600">
+              <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z" clip-rule="evenodd" />
+            </svg>
+
+
           </button>
           <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4 flex h-full w-full">
             <div className="w-1/2 h-full overflow-auto">
@@ -99,49 +103,49 @@ const Popup = ({
                   <p>{selectedPlace.moreImages}</p>
                 </div>
               )}
-             {currentPage === 2 &&
-  (isLoading ? (
-    <div className="text-black">Loading...</div>
-  ) : (
-    <div>
-      <h2 className="text-lg leading-6 font-medium text-gray-900">
-        Map
-      </h2>
-      <div className="absolute top-0 right-0 m-4 flex space-x-4">
-          <button
-            className={`px-3 py-2 rounded-md text-sm font-medium focus:outline-none ${mapApi === 'GOAPI' ? 'bg-indigo-500 text-white' : 'text-gray-700 bg-white'}`}
-            onClick={() => setMapApi('GOAPI')}
-          >
-            GOAPI
-          </button>
-          <button
-            className={`px-3 py-2 rounded-md text-sm font-medium focus:outline-none ${mapApi === 'GMAP' ? 'bg-indigo-500 text-white' : 'text-gray-700 bg-white'}`}
-            onClick={() => setMapApi('GMAP')}
-          >
-            GMAP
-          </button>
-        </div>
-      <div className="h-full w-full">
-      {mapApi === 'GOAPI' ? (
-  data && data.position ? (
-    <MapComponent position={data.position} zoom={13} />
-  ) : (
-    <div className="text-black">
-      Mohon maaf, data map tempat ini belum ada.
-    </div>
-  )
-) : (
-  isLoading ? (
-    <div className="flex justify-center items-center h-full">
-      <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-indigo-500"></div>
-    </div>
-  ) : (
-    <GoogleMapComponent placeName={selectedPlace.name} />
-  )
-)}
-      </div>
-    </div>
-  ))}
+              {currentPage === 2 &&
+                (isLoading ? (
+                  <div className="text-black">Loading...</div>
+                ) : (
+                  <div>
+                    <h2 className="text-lg leading-6 font-medium text-gray-900">
+                      Map
+                    </h2>
+                    <div className="absolute top-0 right-0 m-4 flex space-x-4">
+                      <button
+                        className={`px-3 py-2 rounded-md text-sm font-medium focus:outline-none ${mapApi === 'GOAPI' ? 'bg-indigo-500 text-white' : 'text-gray-700 bg-white'}`}
+                        onClick={() => setMapApi('GOAPI')}
+                      >
+                        GOAPI
+                      </button>
+                      <button
+                        className={`px-3 py-2 rounded-md text-sm font-medium focus:outline-none ${mapApi === 'GMAP' ? 'bg-indigo-500 text-white' : 'text-gray-700 bg-white'}`}
+                        onClick={() => setMapApi('GMAP')}
+                      >
+                        GMAP
+                      </button>
+                    </div>
+                    <div className="h-full w-full">
+                      {mapApi === 'GOAPI' ? (
+                        data && data.position ? (
+                          <MapComponent position={data.position} zoom={13} />
+                        ) : (
+                          <div className="text-black">
+                            Mohon maaf, data map tempat ini belum ada.
+                          </div>
+                        )
+                      ) : (
+                        isLoading ? (
+                          <div className="flex justify-center items-center h-full">
+                            <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-indigo-500"></div>
+                          </div>
+                        ) : (
+                          <GoogleMapComponent placeName={selectedPlace.name} />
+                        )
+                      )}
+                    </div>
+                  </div>
+                ))}
 
             </div>
 
@@ -150,16 +154,16 @@ const Popup = ({
                 <button
                   onClick={handlePrevious}
                   type="button"
-                  className="inline-flex justify-center rounded-md border border-transparent px-4 py-2 bg-indigo-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition ease-in-out duration-150 sm:text-sm sm:leading-5 mr-2"
+                  className="inline-flex justify-center rounded-md border border-transparent min-w-16 py-2 bg-green-700 text-base leading-6 font-medium text-white shadow-sm hover:bg-green-600 focus:outline-none focus:border-green-700 focus:shadow-outline-green transition ease-in-out duration-150 sm:text-sm sm:leading-5 mr-2"
                 >
-                  Previous
+                  Prev
                 </button>
               )}
               {currentPage < totalPage - 1 && (
                 <button
                   onClick={handleNext}
                   type="button"
-                  className="inline-flex justify-center rounded-md border border-transparent px-4 py-2 bg-indigo-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition ease-in-out duration-150 sm:text-sm sm:leading-5"
+                  className="inline-flex justify-center rounded-md border border-transparent min-w-16 py-2 bg-green-700 text-base leading-6 font-medium text-white shadow-sm hover:bg-green-600 focus:outline-none focus:border-green-700 focus:shadow-outline-green transition ease-in-out duration-150 sm:text-sm sm:leading-5"
                 >
                   Next
                 </button>
