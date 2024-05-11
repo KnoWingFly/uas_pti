@@ -1,8 +1,39 @@
-import React from 'react';
+// Popup.jsx
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import MapComponent from "./Map.jsx";
+import axios from 'axios';
 
-const Popup = ({ isOpen, setIsOpen, selectedPlace, currentPage, handleNext, handlePrevious, data }) => {
+const Popup = ({ isOpen, setIsOpen, selectedPlace, currentPage, handleNext, handlePrevious }) => {
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false); // new state for loading
+
+  useEffect(() => {
+    setIsLoading(true); // set loading to true when starting the API call
+    const apiKey = '939d69c9-d9b4-519a-2b1f-a34bef6c';
+    const searchQuery = selectedPlace.name; 
+    const apiUrl = `https://api.goapi.io/places?search=${encodeURIComponent(searchQuery)}&api_key=${apiKey}`;
+
+    axios.get(apiUrl, {
+      headers: {
+        'accept': 'application/json',
+        'X-API-KEY': apiKey
+      }
+    })
+      .then(response => {
+        const { lat, lng } = response.data.data.results[0];
+        setData({ position: [lat, lng] });
+        console.log(`Latitude: ${lat}, Longitude: ${lng}`);
+        setIsLoading(false); // set loading to false when the API call is successful
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        setError(error);
+        setIsLoading(false); // set loading to false even if there is an error
+      });
+  }, [selectedPlace]); 
+
   const totalPage = 3;
 
   return (
@@ -43,7 +74,13 @@ const Popup = ({ isOpen, setIsOpen, selectedPlace, currentPage, handleNext, hand
             <div className="w-1/2 h-full overflow-auto p-4">
                {currentPage === 0 && <div><h2 className="text-lg leading-6 font-medium text-gray-900">Description</h2><p>{selectedPlace.description}</p></div>} 
                {currentPage === 1 && <div><h2 className="text-lg leading-6 font-medium text-gray-900">Images</h2><p>{selectedPlace.moreImages}</p></div>} 
-               {currentPage === 2 && data && data.position && <div><h2 className="text-lg leading-6 font-medium text-gray-900">Map</h2><div className="h-full w-full"><MapComponent position={data.position} zoom={13} /></div></div>}
+               {currentPage === 2 && (
+                  isLoading 
+                    ? <div>Loading...</div> // show loading text when isLoading is true
+                    : data && data.position
+                      ? <div><h2 className="text-lg leading-6 font-medium text-gray-900">Map</h2><div className="h-full w-full"><MapComponent position={data.position} zoom={13} /></div></div>
+                      : <div className='text-black'>Mohon maaf, data map tempat ini belum ada.</div>
+                )}
             </div>
 
             <div className="absolute bottom-0 right-0 m-4">
