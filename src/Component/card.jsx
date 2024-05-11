@@ -4,7 +4,7 @@ import { useApi } from "./API.jsx";
 import Popup from "./Popup.jsx";
 import { places } from "./DataPlace.js";
 
-const Card = () => {
+const Card = ({ searchTerm }) => {
   const { data } = useApi();
   const [isOpen, setIsOpen] = useState(false);
   const [selectedPlace, setSelectedPlace] = useState(null);
@@ -29,9 +29,11 @@ const Card = () => {
     }
   };
 
+  const filteredPlaces = places.filter(place => place.name.toLowerCase().includes(searchTerm.toLowerCase()));
+
   return (
     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center mt-20 mx-10 md:mx-20 lg:mx-40">
-      {places.map((place, index) => (
+      {filteredPlaces.map((place, index) => (
         <div
           key={index}
           className="relative w-50 h-50 md:h-60 lg:h-70 rounded shadow-lg m-2 overflow-hidden group bg-black"
@@ -51,7 +53,7 @@ const Card = () => {
         </div>
       ))}
 
-      <AnimatePresence>
+<AnimatePresence>
         {isOpen && (
           <Popup
             isOpen={isOpen}
