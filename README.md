@@ -1,2 +1,1 @@
 # UAS_PTI
-API Key= fsq3PW0CuaG+j69Rc0FGWsmYWS+H4jje2fZBA6EWKrgjhPU=
