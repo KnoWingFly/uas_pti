@@ -123,16 +123,22 @@ const Popup = ({
         </div>
       <div className="h-full w-full">
       {mapApi === 'GOAPI' ? (
-        data && data.position ? (
-          <MapComponent position={data.position} zoom={13} />
-        ) : (
-          <div className="text-black">
-            Mohon maaf, data map tempat ini belum ada.
-          </div>
-        )
-      ) : (
-        <GoogleMapComponent placeName={selectedPlace.name} />
-      )}
+  data && data.position ? (
+    <MapComponent position={data.position} zoom={13} />
+  ) : (
+    <div className="text-black">
+      Mohon maaf, data map tempat ini belum ada.
+    </div>
+  )
+) : (
+  isLoading ? (
+    <div className="flex justify-center items-center h-full">
+      <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-indigo-500"></div>
+    </div>
+  ) : (
+    <GoogleMapComponent placeName={selectedPlace.name} />
+  )
+)}
       </div>
     </div>
   ))}
