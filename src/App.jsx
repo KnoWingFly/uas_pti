@@ -5,6 +5,7 @@ const Card = React.lazy(() => import("./Component/card.jsx"));
 const Footer = React.lazy(() => import("./Component/Footer.jsx"));
 const Popup = React.lazy(() => import("./Component/Popup.jsx"));
 const Search = React.lazy(() => import("./Component/Search.jsx"));
+const CategoryCard = React.lazy(()=> import("./Component/CategoryCard.jsx"))
 
 function App() {
   const [isOpenNav, setIsOpenNav] = useState(false); // State to control the navbar
@@ -39,12 +40,12 @@ function App() {
   return (
     <div className="App bg-white min-h-screen text-white">
       <Suspense fallback={<div>Loading...</div>}>
-        {/* Pass isOpen and setIsOpen to Nav */}
         <Nav isOpen={isOpenNav} setIsOpen={setIsOpenNav} />
         <Header isOpen={isOpenNav} onSuggestionClick={handleSuggestionClick} setSearchTerm={setSearchTerm} />
+        {/* Render CategoryCard */}
+        <CategoryCard category="Religion" searchTerm={searchTerm} />
         <Card searchTerm={searchTerm} />
         <Footer />
-        {/* Render Popup with correct props */}
         <Popup 
           isOpen={isOpenPopup} 
           setIsOpen={setIsOpenPopup} 
@@ -53,11 +54,11 @@ function App() {
           handleNext={handleNext} 
           handlePrevious={handlePrevious} 
           onClose={handleClosePopup} 
-          setIsSearchBarVisible={setIsSearchBarVisible} // Pass setIsSearchBarVisible to Popup
+          setIsSearchBarVisible={setIsSearchBarVisible}
         />
         <Search 
           onSuggestionClick={handleSuggestionClick} 
-          isSearchBarVisible={!isOpenNav && (!isOpenPopup || isSearchBarVisible)} // Toggle search bar visibility
+          isSearchBarVisible={!isOpenNav && (!isOpenPopup || isSearchBarVisible)} 
         />
       </Suspense>
     </div>
