@@ -19,7 +19,6 @@ export function useApi(searchQuery) {
       .then((response) => {
         const { lat, lng } = response.data.data.results[0];
         setData({ position: [lat, lng] });
-        console.log(`Latitude: ${lat}, Longitude: ${lng}`);
       })
       .catch((error) => {
         console.error("Error:", error);

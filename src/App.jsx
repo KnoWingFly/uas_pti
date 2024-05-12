@@ -25,8 +25,8 @@ function App() {
   const handleClosePopup = () => {
     setSelectedPlace(null);
     setIsOpenPopup(false);
-    setCurrentPage(0); 
-    setIsSearchBarVisible(true); 
+    setCurrentPage(0);
+    setIsSearchBarVisible(true);
   };
 
   const handleNext = () => {

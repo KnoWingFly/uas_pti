@@ -1,6 +1,6 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MenuIcon } from "@heroicons/react/outline";
+import { MenuIcon, XIcon } from "@heroicons/react/outline";
 
 const navigation = [
   { name: "Gallery", href: "#", current: true },
@@ -17,7 +17,25 @@ function Nav({ isOpen, setIsOpen }) {
         onClick={() => setIsOpen(!isOpen)}
         className="fixed top-0 right-0 m-4 z-50 backdrop-blur-md"
       >
-        <MenuIcon className="h-8 w-12 p-1 border border-white rounded-md bg-black/50 item-xl text-white" />
+        <AnimatePresence mode='wait'>
+          {isOpen ? (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              <XIcon className="h-8 w-12 p-1 border border-white rounded-md bg-black/50 item-xl text-white" />
+            </motion.div>
+          ) : (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              <MenuIcon className="h-8 w-12 p-1 border border-white rounded-md bg-black/50 item-xl text-white" />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </button>
       <AnimatePresence>
         {isOpen && (

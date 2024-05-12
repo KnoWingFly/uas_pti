@@ -37,6 +37,7 @@ function Search({ onSuggestionClick, isSearchBarVisible }) {
   };
 
   return (
+    // Conditionally render the search bar based on isSearchBarVisible state
     isSearchBarVisible && (
       <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-1/3 mt-10 z-50">
         <div className="flex items-center bg-black/70 backdrop-blur-md rounded-full border border-8 border-double border-white/75 p-2 shadow-2xl">
@@ -60,7 +61,7 @@ function Search({ onSuggestionClick, isSearchBarVisible }) {
             placeholder="Where can we take you?"
             value={inputValue}
             onChange={handleInputChange}
-            onFocus={() => setShowSuggestions(inputValue.trim() !== '')} 
+            onFocus={() => setShowSuggestions(inputValue.trim() !== '')} // Show suggestions on input focus
           />
         </div>
         {showSuggestions && suggestions.length > 0 && (
