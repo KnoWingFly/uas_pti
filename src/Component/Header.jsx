@@ -71,7 +71,13 @@ function Header({ isOpen, setSearchTerm, onSuggestionClick }) {
             ref={bgRef}
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: `url(${places[currentPlaceIndex].image})` }}
-          />
+          >
+
+            <div className="bg-gradient-to-b from-transparent from-5% via-transparent via-65% to-white relative inset-x-0 bottom-0 w-full h-full"></div>
+          </div>
+
+          {/* <div className="bg-gradient-to-b from-transparent to-white absolute inset-x-0 bottom-0 z-50"></div> */}
+
           <div className="p-4 absolute bottom-0 left-0 text-left">
             <h1
               ref={discoverRef}

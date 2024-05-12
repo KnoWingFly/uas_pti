@@ -87,7 +87,7 @@ const CategoryCard = ({ searchTerm }) => {
         {filteredPlaces.map((place, index) => (
           <div
             key={index}
-            className="relative w-50 h-50 md:h-60 lg:h-70 rounded shadow-lg m-2 overflow-hidden group bg-black cursor-pointer"
+            className="relative w-50 h-50 md:h-60 lg:h-70 rounded shadow-lg m-2 overflow-hidden group bg-black"
             onClick={() => handleClick(place)}
           >
             <img
@@ -95,9 +95,16 @@ const CategoryCard = ({ searchTerm }) => {
               src={place.image}
               alt={place.name}
             />
-            <p className="opacity-0 group-hover:opacity-100 duration-300 absolute inset-0 flex justify-center items-start text-white font-semibold pt-5">
-              {place.shortDesc}
-            </p>
+
+            <div className="absolute inset-x-0 top-0 flex justify-center items-center cursor-pointer">
+              <div className="group-hover:bg-gradient-to-t from-transparent to-black h-full w-full object-cover absolute z-10 transition-all duration-300 ease-in-out"></div>
+              {/* <div className="group-hover:bg-white h-full w-full object-cover absolute z-10 transition duration-1000 ease-in-out"></div> */}
+              {/* <p className="opacity-0 group-hover:opacity-100 duration-300 absolute inset-0 flex justify-center items-start text-white font-semibold pt-5"> */}
+              <p className="opacity-0 group-hover:opacity-100 duration-300 text-white font-semibold flex text-center p-5 z-20">
+                {place.shortDesc}
+              </p>
+            </div>
+
             <div className="font-bold text-xs text-white ms-2 mb-1 absolute bottom-0 left-0 bg-black opacity-80 rounded-full px-3">
               {place.name}
             </div>

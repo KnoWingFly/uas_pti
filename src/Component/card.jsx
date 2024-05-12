@@ -47,8 +47,15 @@ const Card = ({ searchTerm }) => {
             src={place.image}
             alt={place.name}
           />
-          <div className="absolute inset-x-0 top-0 flex justify-center items-center">
-            <p className="opacity-0 group-hover:opacity-100 duration-300 text-white font-semibold bg-gradient-to-t from-transparent to-black">
+
+          {/* <div className="hover:bg-black z-30 h-full h-full object-cover visible"></div> */}
+
+{/* bg-gradient-to-t from-transparent to-black */}
+          <div className="absolute inset-x-0 top-0 flex justify-center items-center cursor-pointer">
+
+            <div className="group-hover:bg-gradient-to-t from-transparent to-black h-full w-full object-cover absolute z-10 transition duration-1000 ease-in-out"></div>
+
+            <p className="opacity-0 group-hover:opacity-100 duration-300 text-white font-semibold p-5 text-center z-20">
               {place.shortDesc}
             </p>
           </div>
