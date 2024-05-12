@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import { useApi } from "./API.jsx";
 import Popup from "./Popup.jsx";
-import { places } from "./DataPlace.js";
+import {places} from "./DataPlace.js"
 
 const Card = ({ searchTerm }) => {
   const { data } = useApi();
