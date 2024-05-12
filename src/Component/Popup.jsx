@@ -104,12 +104,16 @@ const Popup = ({
                     <p>{selectedPlace.moreImages}</p>
                   </div>
                 )}
+
                 {currentPage === 2 && (
                   <>
+
                     <h2 className="text-lg leading-6 font-medium text-gray-900">
                       Map
                     </h2>
-                    <div className="absolute top-0 right-0 m-4 flex space-x-4">
+
+                    <div className="relative top-0 right-0 m-4 ms-0 flex space-x-4 justify-start">
+
                       <button
                         className={`px-3 py-2 rounded-md text-sm font-medium focus:outline-none ${
                           mapApi === "GOAPI"
@@ -120,6 +124,7 @@ const Popup = ({
                       >
                         GOAPI
                       </button>
+
                       <button
                         className={`px-3 py-2 rounded-md text-sm font-medium focus:outline-none ${
                           mapApi === "GMAP"
@@ -130,11 +135,17 @@ const Popup = ({
                       >
                         GMAP
                       </button>
+
                     </div>
-                    <div className="h-full w-full">
+
+                    <div className="h-3/4 w-full overflow-auto">
                       {mapApi === "GOAPI" ? (
                         data && data.position ? (
-                          <MapComponent position={data.position} zoom={13} />
+
+                          <div className="object-cover">
+                            <MapComponent position={data.position} zoom={13} />
+                          </div>
+
                         ) : (
                           <div className="text-black">
                             Mohon maaf, data map tempat ini belum ada.
@@ -146,15 +157,50 @@ const Popup = ({
                             <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-indigo-500"></div>
                           </div>
                         ) : (
-                          <GoogleMapComponent placeName={selectedPlace.name} />
+                          <div className="object-contain">
+                            <GoogleMapComponent placeName={selectedPlace.name} />
+                          </div>
                         )
                       )}
                     </div>
                   </>
                 )}
+
+                <div className="flex m-4 justify-between absolute bottom-0 right-0 w-2/4 ps-6 z-60">
+
+                  <div>
+
+                    {currentPage > 0 && (
+                      <button
+                        onClick={handlePrevious}
+                        type="button"
+                        className="inline-flex justify-center rounded-md border border-transparent px-4 py-2 bg-green-700 text-base leading-6 font-medium text-white shadow-sm hover:bg-green-600 focus:outline-none focus:border-green-600 focus:shadow-outline"
+                      >
+                        Previous
+                      </button>
+                    )}
+
+                  </div>
+
+                  <div>
+
+                    {currentPage < totalPage - 1 && (
+                    <button
+                      onClick={handleNext}
+                      type="button"
+                      className="ml-4 inline-flex justify-center rounded-md border border-transparent px-4 py-2 bg-green-700 text-base leading-6 font-medium text-white shadow-sm hover:bg-green-600 focus:outline-none focus:border-green-600 focus:shadow-outline"
+                    >
+                      Next
+                    </button>
+                    )}
+
+                  </div>
+
+                </div>
+
               </div>
 
-              <div className="absolute bottom-0 right-0 m-4">
+              {/* <div className="absolute bottom-0 right-0 m-4">
                 {currentPage > 0 && (
                   <button
                     onClick={handlePrevious}
@@ -173,7 +219,7 @@ const Popup = ({
                     Next
                   </button>
                 )}
-              </div>
+              </div> */}
             </div>
           </motion.div>
         </div>

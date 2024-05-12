@@ -22,7 +22,7 @@ const GoogleMapComponent = ({ placeName }) => {
   const googleMapsUrl = `https://www.google.com/maps/embed/v1/place?key=AIzaSyC_AEfhRfMFqct0KP-HJV3ptrN6WrttOy8&q=${encodeURIComponent(placeName)}`;
 
   return (
-    <div style={{ height: "50vh", width: "100%" }}>
+    <div style={{ height: "40vh", width: "100%" }}>
       {isMapLoading && (
         <div className="flex justify-center items-center h-full">
           <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-indigo-500"></div>
