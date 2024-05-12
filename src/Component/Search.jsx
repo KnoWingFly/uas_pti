@@ -7,7 +7,6 @@ function Search({ onSuggestionClick, isSearchBarVisible }) {
   const [showSuggestions, setShowSuggestions] = useState(false);
 
   useEffect(() => {
-    // Hide suggestions when user clicks outside the input
     const handleClickOutside = (event) => {
       if (event.target.tagName !== 'INPUT') {
         setShowSuggestions(false);
@@ -28,15 +27,13 @@ function Search({ onSuggestionClick, isSearchBarVisible }) {
     const newSuggestions = places.filter(place => place.name.toLowerCase().includes(value.toLowerCase()));
     setSuggestions(newSuggestions);
 
-    // Show suggestions when input is not empty
     setShowSuggestions(value.trim() !== '');
   };
 
-  // Function to handle suggestion click
   const handleSuggestionClick = (suggestion) => {
     onSuggestionClick(suggestion);
     setInputValue('');
-    setShowSuggestions(false); // Hide suggestions after click
+    setShowSuggestions(false); 
   };
 
   return (

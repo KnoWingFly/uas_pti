@@ -5,27 +5,28 @@ const Card = React.lazy(() => import("./Component/card.jsx"));
 const Footer = React.lazy(() => import("./Component/Footer.jsx"));
 const Popup = React.lazy(() => import("./Component/Popup.jsx"));
 const Search = React.lazy(() => import("./Component/Search.jsx"));
+const CategoryCard = React.lazy(()=> import("./Component/CategoryCard.jsx"))
 
 function App() {
-  const [isOpenNav, setIsOpenNav] = useState(false); // State to control the navbar
+  const [isOpenNav, setIsOpenNav] = useState(false); 
   const [selectedPlace, setSelectedPlace] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
-  const [currentPage, setCurrentPage] = useState(0); // State to control current page in popup
-  const [isOpenPopup, setIsOpenPopup] = useState(false); // State to control the popup
-  const [isSearchBarVisible, setIsSearchBarVisible] = useState(true); // State to control the visibility of the search bar
+  const [currentPage, setCurrentPage] = useState(0); 
+  const [isOpenPopup, setIsOpenPopup] = useState(false); 
+  const [isSearchBarVisible, setIsSearchBarVisible] = useState(true); 
 
   const handleSuggestionClick = (place) => {
     setSelectedPlace(place);
-    setIsOpenPopup(true); // Open the popup when a suggestion is clicked
-    setIsSearchBarVisible(false); // Hide the search bar when opening the popup
-    setIsOpenNav(false); // Close the navbar when a suggestion is clicked
+    setIsOpenPopup(true); 
+    setIsSearchBarVisible(false); 
+    setIsOpenNav(false); 
   };
 
   const handleClosePopup = () => {
     setSelectedPlace(null);
     setIsOpenPopup(false);
-    setCurrentPage(0); // Reset current page when closing the popup
-    setIsSearchBarVisible(true); // Show the search bar when closing the popup
+    setCurrentPage(0);
+    setIsSearchBarVisible(true);
   };
 
   const handleNext = () => {
@@ -39,12 +40,11 @@ function App() {
   return (
     <div className="App bg-white min-h-screen text-white">
       <Suspense fallback={<div>Loading...</div>}>
-        {/* Pass isOpen and setIsOpen to Nav */}
         <Nav isOpen={isOpenNav} setIsOpen={setIsOpenNav} />
         <Header isOpen={isOpenNav} onSuggestionClick={handleSuggestionClick} setSearchTerm={setSearchTerm} />
+        <CategoryCard category="Religion" searchTerm={searchTerm} />
         <Card searchTerm={searchTerm} />
         <Footer />
-        {/* Render Popup with correct props */}
         <Popup 
           isOpen={isOpenPopup} 
           setIsOpen={setIsOpenPopup} 
@@ -53,11 +53,11 @@ function App() {
           handleNext={handleNext} 
           handlePrevious={handlePrevious} 
           onClose={handleClosePopup} 
-          setIsSearchBarVisible={setIsSearchBarVisible} // Pass setIsSearchBarVisible to Popup
+          setIsSearchBarVisible={setIsSearchBarVisible}
         />
         <Search 
           onSuggestionClick={handleSuggestionClick} 
-          isSearchBarVisible={!isOpenNav && (!isOpenPopup || isSearchBarVisible)} // Toggle search bar visibility
+          isSearchBarVisible={!isOpenNav && (!isOpenPopup || isSearchBarVisible)} 
         />
       </Suspense>
     </div>
