@@ -164,7 +164,7 @@ export const places = [
         category: "Theme Park",
         description: "Dogi Park Waterboom Indrapura di Batu Bara, Sumatera Utara, menawarkan berbagai wahana air yang seru dan edukatif untuk dinikmati semua usia. Pengunjung dapat merasakan sensasi meluncur dari Kolam Kolam Tsunami, bermain air di Kolam Arus, dan berenang di Kolam Anak yang aman.",
         shortDesc: "Taman air seru di Batu Bara",
-        rating: 4.5,
+        rating: 3.5,
         image: require('../img/wisata-dogi-park-waterboom-indrapura.jpg')
     },
     {
@@ -172,7 +172,7 @@ export const places = [
         category: "Theme Park",
         description: "Mikie Funland di Berastagi, Sumatera Utara, merupakan taman hiburan terbesar di Sumatera Utara yang menawarkan lebih dari 35 wahana seru untuk segala usia. Pengunjung dapat menikmati wahana menegangkan seperti Super Tornado dan Viking, wahana ramah anak seperti Carousel dan Mini Train, serta berbagai wahana lainnya yang menarik.",
         shortDesc: "Taman hiburan terbesar di Sumatera Utara",
-        rating: 4.7,
+        rating: 3.7,
         image: require('../img/mikie-funland.png')
     },
     {
