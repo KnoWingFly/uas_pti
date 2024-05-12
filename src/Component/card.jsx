@@ -50,8 +50,7 @@ const Card = ({ searchTerm }) => {
 
           {/* <div className="hover:bg-black z-30 h-full h-full object-cover visible"></div> */}
 
-{/* bg-gradient-to-t from-transparent to-black */}
-          <div className="absolute inset-x-0 top-0 flex justify-center items-center cursor-pointer">
+          <div className="absolute inset-x-0 top-0 flex justify-center items-center cursor-pointer group">
 
             <div className="group-hover:bg-gradient-to-t from-transparent to-black h-full w-full object-cover absolute z-10 transition duration-1000 ease-in-out"></div>
 

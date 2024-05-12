@@ -57,14 +57,15 @@ const Popup = ({
       exit={{ opacity: 0 }}
       className="fixed z-10 inset-0 overflow-y-auto"
     >
-      <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+      <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0 mx-5">
         <motion.div
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           exit={{ scale: 0 }}
           className="fixed inset-0 transition-opacity"
         >
-          <div className="absolute inset-0 bg-gray-500 opacity-75"></div>
+          <div className="absolute overlay inset-0 bg-gray-500 opacity-75"></div>
+
         </motion.div>
         <span className="hidden sm:inline-block sm:align-middle sm:h-screen"></span>
         <motion.div
@@ -81,15 +82,17 @@ const Popup = ({
           >
             X
           </button>
-          <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4 flex h-full w-full">
-            <div className="w-1/2 h-full overflow-auto">
+
+          <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4 flex flex-col md:flex-row h-full w-full">
+            <div className="w-full md:w-1/2 h-full overflow-auto">
               <img
                 className="w-full h-full object-cover rounded transition duration-300"
                 src={selectedPlace.image}
                 alt={selectedPlace.name}
               />
             </div>
-            <div className="w-1/2 h-full overflow-auto p-4">
+
+            <div className="w-full md:w-1/2 h-full overflow-auto p-4">
               {currentPage === 0 && (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
@@ -224,7 +227,7 @@ const Popup = ({
                 </>
               )}
 
-              <div className="flex m-4 justify-between absolute bottom-0 right-0 w-2/4 ps-6 z-60">
+              <div className="flex md:m-4 justify-between absolute bottom-0 right-0 w-full md:w-2/4 p-6 pb-3 md:p-0 md:pb-0 md:ps-6 z-60">
                 <div>
                   {currentPage > 0 && (
                     <button
