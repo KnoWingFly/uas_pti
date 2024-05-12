@@ -8,25 +8,25 @@ const Search = React.lazy(() => import("./Component/Search.jsx"));
 const CategoryCard = React.lazy(()=> import("./Component/CategoryCard.jsx"))
 
 function App() {
-  const [isOpenNav, setIsOpenNav] = useState(false); // State to control the navbar
+  const [isOpenNav, setIsOpenNav] = useState(false); 
   const [selectedPlace, setSelectedPlace] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
-  const [currentPage, setCurrentPage] = useState(0); // State to control current page in popup
-  const [isOpenPopup, setIsOpenPopup] = useState(false); // State to control the popup
-  const [isSearchBarVisible, setIsSearchBarVisible] = useState(true); // State to control the visibility of the search bar
+  const [currentPage, setCurrentPage] = useState(0); 
+  const [isOpenPopup, setIsOpenPopup] = useState(false); 
+  const [isSearchBarVisible, setIsSearchBarVisible] = useState(true); 
 
   const handleSuggestionClick = (place) => {
     setSelectedPlace(place);
-    setIsOpenPopup(true); // Open the popup when a suggestion is clicked
-    setIsSearchBarVisible(false); // Hide the search bar when opening the popup
-    setIsOpenNav(false); // Close the navbar when a suggestion is clicked
+    setIsOpenPopup(true); 
+    setIsSearchBarVisible(false); 
+    setIsOpenNav(false); 
   };
 
   const handleClosePopup = () => {
     setSelectedPlace(null);
     setIsOpenPopup(false);
-    setCurrentPage(0); // Reset current page when closing the popup
-    setIsSearchBarVisible(true); // Show the search bar when closing the popup
+    setCurrentPage(0); 
+    setIsSearchBarVisible(true); 
   };
 
   const handleNext = () => {
@@ -42,7 +42,6 @@ function App() {
       <Suspense fallback={<div>Loading...</div>}>
         <Nav isOpen={isOpenNav} setIsOpen={setIsOpenNav} />
         <Header isOpen={isOpenNav} onSuggestionClick={handleSuggestionClick} setSearchTerm={setSearchTerm} />
-        {/* Render CategoryCard */}
         <CategoryCard category="Religion" searchTerm={searchTerm} />
         <Card searchTerm={searchTerm} />
         <Footer />

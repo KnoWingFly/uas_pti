@@ -7,7 +7,6 @@ function Search({ onSuggestionClick, isSearchBarVisible }) {
   const [showSuggestions, setShowSuggestions] = useState(false);
 
   useEffect(() => {
-    // Hide suggestions when user clicks outside the input
     const handleClickOutside = (event) => {
       if (event.target.tagName !== 'INPUT') {
         setShowSuggestions(false);
@@ -28,19 +27,16 @@ function Search({ onSuggestionClick, isSearchBarVisible }) {
     const newSuggestions = places.filter(place => place.name.toLowerCase().includes(value.toLowerCase()));
     setSuggestions(newSuggestions);
 
-    // Show suggestions when input is not empty
     setShowSuggestions(value.trim() !== '');
   };
 
-  // Function to handle suggestion click
   const handleSuggestionClick = (suggestion) => {
     onSuggestionClick(suggestion);
     setInputValue('');
-    setShowSuggestions(false); // Hide suggestions after click
+    setShowSuggestions(false); 
   };
 
   return (
-    // Conditionally render the search bar based on isSearchBarVisible state
     isSearchBarVisible && (
       <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-1/3 mt-10 z-50">
         <div className="flex items-center bg-black/70 backdrop-blur-md rounded-full border border-8 border-double border-white/75 p-2 shadow-2xl">
@@ -64,7 +60,7 @@ function Search({ onSuggestionClick, isSearchBarVisible }) {
             placeholder="Where can we take you?"
             value={inputValue}
             onChange={handleInputChange}
-            onFocus={() => setShowSuggestions(inputValue.trim() !== '')} // Show suggestions on input focus
+            onFocus={() => setShowSuggestions(inputValue.trim() !== '')} 
           />
         </div>
         {showSuggestions && suggestions.length > 0 && (

@@ -105,7 +105,6 @@ const CategoryCard = ({ searchTerm }) => {
         ))}
       </div>
 
-      {/* Popup */}
       <AnimatePresence>
         {isOpen && (
           <Popup
