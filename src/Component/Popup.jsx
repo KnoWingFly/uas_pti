@@ -64,7 +64,7 @@ const Popup = ({
           exit={{ scale: 0 }}
           className="fixed inset-0 transition-opacity"
         >
-          <div className="absolute overlay inset-0 bg-gray-500 opacity-75"></div>
+        <div className="absolute overlay inset-0 bg-gray-500 opacity-75 z-70"></div>
 
         </motion.div>
         <span className="hidden sm:inline-block sm:align-middle sm:h-screen"></span>
