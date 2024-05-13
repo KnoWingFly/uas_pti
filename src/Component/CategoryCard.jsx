@@ -10,9 +10,8 @@ const CategoryCard = ({ searchTerm }) => {
   const [selectedPlace, setSelectedPlace] = useState(null);
   const [currentPage, setCurrentPage] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState(null);
-  const [showCategories, setShowCategories] = useState(false); // State untuk menampilkan/menyembunyikan daftar kategori
+  const [showCategories, setShowCategories] = useState(false); 
 
-  // Mencari kategori unik dari daftar tempat
   const categories = [...new Set(places.map((place) => place.category))];
 
   const handleClick = (place) => {
@@ -22,7 +21,7 @@ const CategoryCard = ({ searchTerm }) => {
   };
 
   const handleNext = () => {
-    const totalPages = 3; // Assuming 3 pages for pagination
+    const totalPages = 3;
     if (currentPage < totalPages - 1) {
       setCurrentPage(currentPage + 1);
     }
@@ -34,16 +33,14 @@ const CategoryCard = ({ searchTerm }) => {
     }
   };
 
-  // Filter tempat berdasarkan kategori yang dipilih dan kata kunci pencarian
   const filteredPlaces = places.filter(
     (place) =>
-      (!selectedCategory || place.category === selectedCategory) && // Filter berdasarkan kategori yang dipilih
+      (!selectedCategory || place.category === selectedCategory) && 
       place.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
     <div className="my-5">
-      {/* Tampilkan dropdown kategori */}
       <div className="relative inline-block text-left mb-4 mt-2">
         <button
           className="px-4 py-2 rounded bg-blue-500 text-white"
@@ -51,7 +48,6 @@ const CategoryCard = ({ searchTerm }) => {
         >
           Category
         </button>
-        {/* Tampilkan daftar kategori saat showCategories bernilai true */}
         {showCategories && (
           <div className="origin-top-right absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-10">
             <div
@@ -82,7 +78,6 @@ const CategoryCard = ({ searchTerm }) => {
         )}
       </div>
 
-      {/* Daftar tempat */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center mx-4 md:mx-8 lg:mx-16">
         {filteredPlaces.map((place, index) => (
           <div
@@ -98,8 +93,7 @@ const CategoryCard = ({ searchTerm }) => {
 
             <div className="absolute inset-x-0 top-0 flex justify-center items-center cursor-pointer group">
               <div className="group-hover:bg-gradient-to-t from-transparent to-black h-full w-full object-cover absolute z-10 transition-all duration-300 ease-in-out"></div>
-              {/* <div className="group-hover:bg-white h-full w-full object-cover absolute z-10 transition duration-1000 ease-in-out"></div> */}
-              {/* <p className="opacity-0 group-hover:opacity-100 duration-300 absolute inset-0 flex justify-center items-start text-white font-semibold pt-5"> */}
+              \
               <p className="opacity-0 group-hover:opacity-100 duration-300 text-white font-semibold flex text-center p-5 z-20">
                 {place.shortDesc}
               </p>

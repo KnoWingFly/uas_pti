@@ -1,10 +1,11 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
+import { Link } from "react-router-dom"; // Tambahkan impor Link
 
 const navigation = [
-  { name: "Gallery", href: "#", current: true },
-  { name: "Discover", href: "", current: false },
+  { name: "Main", href: "/", current: true },
+  { name: "Category", href: "/category", current: false }, 
   { name: "Templates", href: "#", current: false },
   { name: "Updates", href: "#", current: false },
   { name: "Blog", href: "#", current: false },
@@ -13,6 +14,7 @@ const navigation = [
 function Nav({ isOpen, setIsOpen }) {
   return (
     <div>
+      {/* Tombol untuk membuka dan menutup navbar */}
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="fixed top-0 right-0 m-4 z-50 backdrop-blur-md"
@@ -37,6 +39,7 @@ function Nav({ isOpen, setIsOpen }) {
           )}
         </AnimatePresence>
       </button>
+      {/* Overlay untuk menutup navbar saat diklik */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -49,6 +52,7 @@ function Nav({ isOpen, setIsOpen }) {
           />
         )}
       </AnimatePresence>
+      {/* Navbar */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -64,6 +68,7 @@ function Nav({ isOpen, setIsOpen }) {
             className="fixed top-0 left-0 h-full w-64 bg-slate-300/75 text-black p-8 z-50"
           >
             <div className="flex flex-col space-y-4">
+              {/* Membuat menu navigasi */}
               {navigation.map((item) => (
                 <motion.a
                   key={item.name}
@@ -80,7 +85,12 @@ function Nav({ isOpen, setIsOpen }) {
                   }}
                   onClick={(e) => e.stopPropagation()}
                 >
-                  {item.name}
+                  {/* Menggunakan Link untuk mengarahkan ke halaman kategori */}
+                  {item.name === "Category" ? (
+                    <Link to={item.href}>{item.name}</Link>
+                  ) : (
+                    item.name
+                  )}
                 </motion.a>
               ))}
             </div>
