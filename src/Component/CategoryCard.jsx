@@ -44,7 +44,7 @@ const CategoryCard = ({ searchTerm }) => {
   return (
     <div className="my-5">
       {/* Tampilkan dropdown kategori */}
-      <div className="relative inline-block text-left mb-4 mt-2">
+      <div className="relative inline-block text-left mb-4 mt-2 z-10">
         <button
           className="px-4 py-2 rounded bg-blue-500 text-white"
           onClick={() => setShowCategories(!showCategories)}
@@ -53,7 +53,7 @@ const CategoryCard = ({ searchTerm }) => {
         </button>
         {/* Tampilkan daftar kategori saat showCategories bernilai true */}
         {showCategories && (
-          <div className="origin-top-right absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-10">
+          <div className="origin-top-right absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-[15]">
             <div
               className="py-1"
               role="menu"
@@ -97,10 +97,10 @@ const CategoryCard = ({ searchTerm }) => {
             />
 
             <div className="absolute inset-x-0 top-0 flex justify-center items-center cursor-pointer group">
-              <div className="group-hover:bg-gradient-to-t from-transparent to-black h-full w-full object-cover absolute z-10 transition-all duration-300 ease-in-out"></div>
+              <div className="group-hover:bg-gradient-to-t from-transparent to-black h-full w-full object-cover absolute transition-all duration-300 ease-in-out"></div>
               {/* <div className="group-hover:bg-white h-full w-full object-cover absolute z-10 transition duration-1000 ease-in-out"></div> */}
               {/* <p className="opacity-0 group-hover:opacity-100 duration-300 absolute inset-0 flex justify-center items-start text-white font-semibold pt-5"> */}
-              <p className="opacity-0 group-hover:opacity-100 duration-300 text-white font-semibold flex text-center p-5 z-20">
+              <p className="opacity-0 group-hover:opacity-100 duration-300 text-white font-semibold flex text-center p-5 z-[8]">
                 {place.shortDesc}
               </p>
             </div>
