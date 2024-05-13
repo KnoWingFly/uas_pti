@@ -7,7 +7,7 @@ const navigation = [
   { name: "Main", href: "/", current: true },
   { name: "Category", href: "/category", current: false }, 
   { name: "Templates", href: "#", current: false },
-  { name: "Updates", href: "#", current: false },
+  { name: "About Us", href: "/aboutus", current: false },
   { name: "Blog", href: "#", current: false },
 ];
 
