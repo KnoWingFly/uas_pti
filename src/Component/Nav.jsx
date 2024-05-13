@@ -8,7 +8,7 @@ const navigation = [
   { name: "Category", href: "/category", current: false }, 
   { name: "Templates", href: "#", current: false },
   { name: "About Us", href: "/aboutus", current: false },
-  { name: "Blog", href: "#", current: false },
+  { name: "GitHub", href: "https://github.com/KnoWingFly/uas_pti/", current: false },
 ];
 
 function Nav({ isOpen, setIsOpen }) {

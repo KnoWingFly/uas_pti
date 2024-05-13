@@ -12,13 +12,13 @@ export default function Footer() {
                     </a>
                     <ul className="flex flex-wrap mt-2 items-center mb-6 text-lg font-medium text-white sm:mb-0">
                         <li>
-                            <a href="#" className="hover:underline me-4 md:me-6 hover:text-green-600">Home</a>
+                            <a href="/main" className="hover:underline me-4 md:me-6 hover:text-green-600">Main</a>
                         </li>
                         <li>
-                            <a href="#" className="hover:underline me-4 md:me-6 hover:text-green-600">Category</a>
+                            <a href="/category" className="hover:underline me-4 md:me-6 hover:text-green-600">Category</a>
                         </li>
                         <li>
-                            <a href="#" className="hover:underline me-4 md:me-6 hover:text-green-600">About Us</a>
+                            <a href="/aboutus" className="hover:underline me-4 md:me-6 hover:text-green-600">About Us</a>
                         </li>
                         <li>
                             <a href="https://github.com/KnoWingFly/uas_pti/" className="hover:underline me-7 hover:text-green-600">GitHub</a>

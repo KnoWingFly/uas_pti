@@ -87,7 +87,7 @@ function Header({ isOpen, setSearchTerm, onSuggestionClick }) {
             </h1>
             <div
               ref={textRef}
-              className="p-2 backdrop-blur-md rounded-full inline-flex border border-4 border-white items-center relative scale-100 opacity-100 px-5 pe-7"
+              className="p-2 backdrop-blur-md mb-16 rounded-full inline-flex border border-4 border-white items-center relative scale-100 opacity-100 px-5 pe-7"
             >
               <div className="absolute inset-0 bg-black opacity-50 rounded-full"></div>
               <div className="relative z-10 flex items-center">

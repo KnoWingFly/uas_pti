@@ -12,14 +12,16 @@ import './style.css';
 import stevjo from "../img/stevjo.jpeg";
 // import required modules
 import { EffectCoverflow, Pagination } from 'swiper/modules';
-import Nav from './Nav';
+import Nav from "./Nav";
 import Footer from './Footer';
 
-export default function App() {    
-      return (
+export default function App() {
+    const [searchTerm, setSearchTerm] = useState('');
+    const [isOpenNav, setIsOpenNav] = useState(false);
+    return (
         <>
             <div>
-                <Nav></Nav>
+                <Nav isOpen={isOpenNav} setIsOpen={setIsOpenNav} />
             </div>
             <h1 className='text-center mt-10 text-5xl font-bold'>Our Team</h1>
 
