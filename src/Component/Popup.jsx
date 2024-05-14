@@ -261,8 +261,11 @@ const Popup = ({
                 </div>
               </div>
             </div>
+            
+            <div className="absolute bottom-0 left-0 mb-5 ms-10 text-2xl font-semibold text-gray-900 text-white bg-black opacity-80 rounded-full px-3">
+              <h1>{selectedPlace.rating} ⭐</h1>
+            </div>
 
-            <h1 className="absolute bottom-0 left-0 mb-5 ms-10 text-2xl font-semibold text-gray-900 text-white">{selectedPlace.rating} ⭐</h1>
           </div>
         </motion.div>
       </div>

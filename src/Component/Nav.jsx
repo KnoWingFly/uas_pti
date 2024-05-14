@@ -25,7 +25,7 @@ function Nav({ isOpen, setIsOpen }) {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
             >
-              <XIcon className="h-8 w-12 p-1 border border-white rounded-md bg-black/50 item-xl text-white" />
+              <XIcon className="h-8 w-12 p-1 border border-white rounded-md bg-black/50 item-xl text-white me-2" />
             </motion.div>
           ) : (
             <motion.div
@@ -33,7 +33,7 @@ function Nav({ isOpen, setIsOpen }) {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
             >
-              <MenuIcon className="h-8 w-12 p-1 border border-white rounded-md bg-black/50 item-xl text-white" />
+              <MenuIcon className="h-8 w-12 p-1 border border-white rounded-md bg-black/50 item-xl text-white me-2" />
             </motion.div>
           )}
         </AnimatePresence>

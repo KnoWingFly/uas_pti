@@ -43,7 +43,7 @@ const Card = ({ searchTerm }) => {
           onClick={() => handleClick(place)}
         >
           <img
-            className="w-full h-full object-cover rounded transition duration-300 group-hover:opacity-50 scale-100 group-hover:scale-110 ease-in-out"
+            className="w-full h-full object-cover rounded transition duration-300 group-hover:opacity-50 scale-100 group-hover:scale-110 ease-in-out aspect-video"
             src={place.image}
             alt={place.name}
           />
@@ -54,7 +54,7 @@ const Card = ({ searchTerm }) => {
 
             <div className="group-hover:bg-gradient-to-t from-transparent to-black h-full w-full object-cover absolute z-10 transition duration-1000 ease-in-out"></div>
 
-            <p className="opacity-0 group-hover:opacity-100 duration-300 text-white font-semibold p-5 text-center z-20">
+            <p className="opacity-0 group-hover:opacity-100 duration-300 text-white font-semibold p-5 text-center z-10">
               {place.shortDesc}
             </p>
           </div>

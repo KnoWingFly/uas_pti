@@ -127,14 +127,7 @@ export const places = [
         rating: 3.9,
         image: require('../img/pantai-sorake.png')
     },
-    {
-        name: "Air Terjun Sigura gura",
-        category: "Nature",
-        description: "Air Terjun Sigura-gura di Toba Samosir, Sumatera Utara, merupakan air terjun tertinggi di Indonesia dengan ketinggian 310 meter. Airnya yang deras dan jernih, dikelilingi tebing curam dan hutan yang lebat, menciptakan panorama yang menakjubkan. Pengunjung dapat merasakan sensasi air terjun yang menyegarkan, menjelajahi alam yang masih asri, dan menikmati ketenangan di tengah hutan.",
-        shortDesc: "Air terjun tertinggi di Indonesia",
-        rating: 4.2,
-        image: require('../img/air-terjun-siguragura.png')
-    },
+
     {
         name: "Istana Maimun",
         category: "Historical",
@@ -151,14 +144,7 @@ export const places = [
         rating: 4.5,
         image: require('../img/Vihara_gunung_Timur.jpg')
     },
-    {
-        name: "Taman Alam Lumbini",
-        category: "Nature",
-        description: "Taman Alam Lumbini di Berastagi, Sumatera Utara, adalah taman bunga terbesar di Asia Tenggara. Dengan luas lebih dari 5 hektar, taman ini menampilkan berbagai jenis bunga yang indah dan eksotis. Pengunjung dapat menikmati keindahan alam yang menakjubkan, berjalan-jalan di antara taman bunga yang rimbun, dan berfoto di beragam spot menarik.",
-        shortDesc: "Taman bunga terbesar di Asia Tenggara",
-        rating: 3.6,
-        image: require('../img/taman-alam-lumbini.jpg')
-    },
+
     {
         name: "Dogi Park Waterboom Indrapura",
         category: "Theme Park",
