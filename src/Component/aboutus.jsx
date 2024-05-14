@@ -19,7 +19,7 @@ export default function App() {
     const [searchTerm, setSearchTerm] = useState('');
     const [isOpenNav, setIsOpenNav] = useState(false);
     return (
-        <>
+        <><div className='flex flex-col min-h-screen'>
             <div>
                 <Nav isOpen={isOpenNav} setIsOpen={setIsOpenNav} />
             </div>
@@ -64,7 +64,10 @@ export default function App() {
                     <h1 className='text-white text-center font-extralight'>00000087645</h1>
                 </SwiperSlide>
             </Swiper>
-            <Footer></Footer>
+            <div className='mt-auto'>
+                <Footer></Footer>
+            </div>
+        </div>
         </>
     );
 }

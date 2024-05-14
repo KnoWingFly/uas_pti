@@ -8,7 +8,7 @@ function Category() {
   const [isOpenNav, setIsOpenNav] = useState(false);
   
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col min-h-screen">
       <Nav isOpen={isOpenNav} setIsOpen={setIsOpenNav} />
       <CategoryCard searchTerm={searchTerm} />
       <div className="mt-auto">
