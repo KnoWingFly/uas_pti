@@ -9,6 +9,10 @@ body {
     overflow: auto;
 }
 
+#categoryBody{
+    background: rgb(255,255,255);
+}
+
 body {
     background: rgb(255,255,255);
     background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(204,255,202,1) 79%);

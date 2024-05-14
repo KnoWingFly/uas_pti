@@ -101,9 +101,13 @@ const Popup = ({
                   transition={{ duration: 0.5 }}
                   className="p-4 bg-white rounded-lg shadow-lg flex flex-col items-center justify-center"
                 >
+                  
                   <h2 className="text-2xl font-semibold text-gray-900 mb-4">
                     Description
                   </h2>
+
+                  {/* <h1 className="absolute bottom-0 left-0 mb-5 ms-10 text-2xl font-semibold text-gray-900 text-white">{selectedPlace.rating} ⭐</h1> */}
+
                   <motion.p
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
@@ -169,6 +173,8 @@ const Popup = ({
                   <h2 className="text-lg leading-6 font-medium text-gray-900">
                     Images
                   </h2>
+
+                  {/* <h1 className="absolute bottom-0 left-0 mb-5 ms-10 text-2xl font-semibold text-gray-900 text-white">{selectedPlace.rating} ⭐</h1> */}
                   <p>{selectedPlace.moreImages}</p>
                 </div>
               )}
@@ -178,6 +184,8 @@ const Popup = ({
                   <h2 className="text-lg leading-6 font-medium text-gray-900">
                     Map
                   </h2>
+
+                  {/* <h1 className="absolute bottom-0 left-0 mb-5 ms-10 text-2xl font-semibold text-gray-900 text-white">{selectedPlace.rating} ⭐</h1> */}
 
                   <div className="relative top-0 right-0 m-4 ms-0 flex space-x-4 justify-start">
                     <button
@@ -253,6 +261,8 @@ const Popup = ({
                 </div>
               </div>
             </div>
+
+            <h1 className="absolute bottom-0 left-0 mb-5 ms-10 text-2xl font-semibold text-gray-900 text-white">{selectedPlace.rating} ⭐</h1>
           </div>
         </motion.div>
       </div>

@@ -34,7 +34,7 @@ const Card = ({ searchTerm }) => {
   );
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center mt-20 mx-10 md:mx-20 lg:mx-40">
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center mt-20 mx-10 md:mx-20 lg:mx-30">
       {filteredPlaces.map((place, index) => (
         <motion.div
           key={index}

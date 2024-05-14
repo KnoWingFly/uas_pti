@@ -40,7 +40,7 @@ const CategoryCard = ({ searchTerm }) => {
   );
 
   return (
-    <div className="my-5">
+    <div className="mt-5" id="categoryBody">
       {/* Tampilkan dropdown kategori */}
       <div className="relative inline-block text-left mb-4 mt-2 z-10">
         <button
