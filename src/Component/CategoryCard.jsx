@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useApi } from "./API.jsx";
 import Popup from "./Popup.jsx";
 import { places } from "./DataPlace.js";
@@ -81,13 +81,14 @@ const CategoryCard = ({ searchTerm }) => {
 
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center mx-4 md:mx-8 lg:mx-16">
         {filteredPlaces.map((place, index) => (
-          <div
+          <motion.div
             key={index}
-            className="relative w-50 h-50 md:h-60 lg:h-70 rounded shadow-lg m-2 overflow-hidden group bg-black"
+            whileHover={{ scale: 1.05 }}
+            className="relative w-50 h-50 md:h-60 lg:h-70 rounded-lg shadow-lg m-2 overflow-hidden group bg-black"
             onClick={() => handleClick(place)}
           >
             <img
-              className="w-full h-full object-cover rounded transition duration-300 group-hover:opacity-50 scale-100 group-hover:scale-110 ease-in-out"
+              className="w-full h-full object-cover rounded transition duration-300 group-hover:opacity-50 scale-100 group-hover:scale-110 ease-in-out aspect-video"
               src={place.image}
               alt={place.name}
             />
@@ -104,7 +105,8 @@ const CategoryCard = ({ searchTerm }) => {
             <div className="font-bold text-xs text-white ms-2 mb-1 absolute bottom-0 left-0 bg-black opacity-80 rounded-full px-3">
               {place.name}
             </div>
-          </div>
+            
+          </motion.div>
         ))}
       </div>
 

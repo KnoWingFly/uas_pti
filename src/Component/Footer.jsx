@@ -14,7 +14,7 @@ export default function Footer() {
 
                     <ul className="flex flex-wrap mt-2 items-center mb-6 text-lg font-medium text-white sm:mb-0 min-w-fit">
                         <li>
-                            <a href="/main" className="hover:underline me-4 md:me-6 hover:text-green-600">Main</a>
+                            <a href="/" className="hover:underline me-4 md:me-6 hover:text-green-600">Main</a>
                         </li>
                         <li>
                             <a href="/category" className="hover:underline me-4 md:me-6 hover:text-green-600">Category</a>
@@ -29,7 +29,7 @@ export default function Footer() {
 
                 </div>
                 <hr className="my-6 sm:mx-auto border-black-700 lg:my-8" />
-                <span className="block text-sm sm:text-center text-white min-w-fit">© 2024 <a href="#" className="hover:text-green-600">Sumatera Utara™</a>. All Rights Reserved.</span>
+                <span className="block text-sm sm:text-center text-white min-w-fit">© 2024 <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" className="hover:text-green-600">Sumatera Utara™</a>. All Rights Reserved.</span>
             </div>
         </footer>
 

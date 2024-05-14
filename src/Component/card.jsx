@@ -34,12 +34,12 @@ const Card = ({ searchTerm }) => {
   );
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center mt-20 mx-10 md:mx-20 lg:mx-30">
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center mt-20 mx-10 md:mx-20 lg:mx-30 row-start-6">
       {filteredPlaces.map((place, index) => (
         <motion.div
           key={index}
           whileHover={{ scale: 1.05 }}
-          className="relative w-50 h-50 md:h-60 lg:h-70 rounded shadow-lg m-2 overflow-hidden group bg-black"
+          className="relative w-50 h-50 md:h-60 lg:h-70 rounded-lg shadow-lg m-2 overflow-hidden group bg-black"
           onClick={() => handleClick(place)}
         >
           <img
@@ -58,7 +58,7 @@ const Card = ({ searchTerm }) => {
               {place.shortDesc}
             </p>
           </div>
-          <div className="font-bold text-xs text-white ms-2 mb-1 absolute bottom-0 left-0 bg-black opacity-80 rounded-full px-3">
+          <div className="font-bold text-xs text-white ms-2 mb-1 absolute bottom-0 left-0 bg-black opacity-80 rounded-full px-3 min-w-fit">
             {place.name}
           </div>
         </motion.div>
