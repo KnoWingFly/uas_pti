@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import CategoryCard from "./CategoryCard";
 import Nav from "./Nav";
+import Footer from "./Footer";
 
 function Category() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -10,6 +11,7 @@ function Category() {
     <div>
       <Nav isOpen={isOpenNav} setIsOpen={setIsOpenNav} />
       <CategoryCard searchTerm={searchTerm} />
+      <Footer />
     </div>
   );
 }

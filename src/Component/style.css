@@ -11,7 +11,7 @@ body {
 
 body {
     background: rgb(255,255,255);
-    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(204,255,202,1) 79%);
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(204,255,202,1) 79%); 
     font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
     font-size: 14px;
     color: #000;

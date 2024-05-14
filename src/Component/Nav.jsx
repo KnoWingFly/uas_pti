@@ -6,7 +6,6 @@ import { Link } from "react-router-dom"; // Tambahkan impor Link
 const navigation = [
   { name: "Main", href: "/", current: true },
   { name: "Category", href: "/category", current: false }, 
-  { name: "Templates", href: "#", current: false },
   { name: "About Us", href: "/aboutus", current: false },
   { name: "GitHub", href: "https://github.com/KnoWingFly/uas_pti/", current: false },
 ];
