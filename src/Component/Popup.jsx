@@ -87,7 +87,7 @@ const Popup = ({
             <div className="w-full md:w-1/2 h-full overflow-auto">
               <img
                 className="w-full h-full object-cover rounded transition duration-300"
-                src={selectedPlace.image}
+                src={selectedPlace.imageData}
                 alt={selectedPlace.name}
               />
             </div>

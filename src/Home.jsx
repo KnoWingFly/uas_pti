@@ -5,7 +5,6 @@ const Card = React.lazy(() => import("./Component/card.jsx"));
 const Footer = React.lazy(() => import("./Component/Footer.jsx"));
 const Popup = React.lazy(() => import("./Component/Popup.jsx"));
 const Search = React.lazy(() => import("./Component/Search.jsx"));
-const CategoryCard = React.lazy(()=> import("./Component/CategoryCard.jsx"))
 
 const Home = () =>   {
   const [isOpenNav, setIsOpenNav] = useState(false); 

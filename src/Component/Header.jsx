@@ -1,82 +1,131 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { gsap } from "gsap";
-import TobaLake from "../img/lake_toba.jpg";
-import mikieholiday from "../img/mikie-funland.png";
-import masjidalmashun from "../img/Masjid_Al_Mashun.png";
-import istanamaimun from "../img/Istana_maimun.png";
-import Search from './Search';
-
-const places = [
-  { name: "Danau Toba", image: TobaLake },
-  { name: "Masjid Al Mashun", image: masjidalmashun },
-  { name: "Istana Maimun", image: istanamaimun },
-  { name: "Mikie Funland", image: mikieholiday },
-];
+import Search from "./Search";
+import axios from 'axios';
 
 function Header({ isOpen, setSearchTerm, onSuggestionClick }) {
   const [currentPlaceIndex, setCurrentPlaceIndex] = useState(0);
+  const [places, setPlaces] = useState([]);
   const bgRef = useRef(null);
   const textRef = useRef(null);
   const discoverRef = useRef(null);
 
   const nextPlace = useCallback(() => {
-    setCurrentPlaceIndex((currentPlaceIndex + 1) % places.length);
-    gsap.fromTo(bgRef.current, { opacity: 0 }, { opacity: 1, duration: 1 });
-    gsap.fromTo(
-      textRef.current,
-      { y: 30, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1 },
+    setCurrentPlaceIndex((prevIndex) => (prevIndex + 1) % places.length);
+    animateTransition();
+  }, [places]);
+
+  const prevPlace = useCallback(() => {
+    setCurrentPlaceIndex(
+      (prevIndex) => (prevIndex - 1 + places.length) % places.length
     );
-    gsap.fromTo(
-      discoverRef.current,
-      { y: 30, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1 },
-    );
-  }, [currentPlaceIndex]);
+    animateTransition();
+  }, [places]);
+
+  const animateTransition = () => {
+    if (bgRef.current && textRef.current && discoverRef.current && gsap) {
+      gsap.fromTo(bgRef.current, { opacity: 0 }, { opacity: 1, duration: 1 });
+      gsap.fromTo(
+        textRef.current,
+        { y: 30, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1 }
+      );
+      gsap.fromTo(
+        discoverRef.current,
+        { y: 30, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1 }
+      );
+    }
+  };
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      gsap.to([bgRef.current, textRef.current, discoverRef.current], {
-        opacity: 0,
-        duration: 1,
-        onComplete: nextPlace,
-      });
-    }, 5000);
-    return () => clearTimeout(timer);
-  }, [nextPlace]);
+    const fetchPlacesWithImages = async () => {
+      try {
+        const response = await axios.get('https://api-sumatra.vercel.app/places');
+        const placesData = response.data;
 
-  const prevPlace = () => {
-    setCurrentPlaceIndex(
-      (currentPlaceIndex - 1 + places.length) % places.length,
-    );
-    gsap.fromTo(bgRef.current, { opacity: 0 }, { opacity: 1, duration: 1 });
-    gsap.fromTo(
-      textRef.current,
-      { y: -30, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1 },
-    );
-    gsap.fromTo(
-      discoverRef.current,
-      { y: -30, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1 },
-    );
-  };
+        // Fetch images for each place
+        const placesWithImages = await Promise.all(placesData.map(async (place) => {
+          try {
+            const imageResponse = await axios.get(`https://api-sumatra.vercel.app/img/${place.image}`, {
+              responseType: 'blob' // Specify responseType as blob
+            });
+
+            // Create a FileReader object
+            const reader = new FileReader();
+
+            // Read the blob as Data URL
+            reader.readAsDataURL(imageResponse.data);
+
+            // Return a promise when reading is done
+            return new Promise((resolve, reject) => {
+              reader.onloadend = () => {
+                // Add the Data URL to the place object
+                place.imageData = reader.result;
+                resolve(place);
+              };
+              reader.onerror = reject;
+            });
+          } catch (error) {
+            console.error(`Error fetching image for place ${place.name}:`, error);
+            // If there's an error fetching the image, set imageData to null
+            place.imageData = null;
+            return place;
+          }
+        }));
+
+        setPlaces(placesWithImages);
+      } catch (error) {
+        console.error('Error fetching places:', error);
+      }
+    };
+
+    fetchPlacesWithImages();
+  }, []);
+
+  useEffect(() => {
+    const bgCurrent = bgRef.current;
+    const textCurrent = textRef.current;
+    const discoverCurrent = discoverRef.current;
+
+    const timer = setTimeout(() => {
+      if (bgCurrent && textCurrent && discoverCurrent) {
+        gsap.to([bgCurrent, textCurrent, discoverCurrent], {
+          opacity: 0,
+          duration: 1,
+          onComplete: nextPlace
+        });
+      }
+    }, 5000);
+
+    return () => {
+      clearTimeout(timer);
+      if (bgCurrent && textCurrent && discoverCurrent) {
+        gsap.killTweensOf([bgCurrent, textCurrent, discoverCurrent]);
+      }
+    };
+  }, [nextPlace]);
 
   return (
     <div className="relative min-h-[75vh]">
-      <Search isOpen={isOpen} setSearchTerm={setSearchTerm} onSuggestionClick={onSuggestionClick} />
+      <Search
+        isOpen={isOpen}
+        setSearchTerm={setSearchTerm}
+        onSuggestionClick={onSuggestionClick}
+      />
       <div className="relative min-h-[75vh] flex flex-col justify-center items-start">
         <div>
-          <div
-            ref={bgRef}
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url(${places[currentPlaceIndex].image})` }}
-          >
-
-            <div className="bg-gradient-to-b from-transparent from-5% via-transparent via-65% to-white relative inset-x-0 bottom-0 w-full h-full"></div>
-          </div>
-
-          {/* <div className="bg-gradient-to-b from-transparent to-white absolute inset-x-0 bottom-0 z-50"></div> */}
+          {places.length > 0 && places[currentPlaceIndex].imageData ? (
+            <div
+              ref={bgRef}
+              className="absolute inset-0 bg-cover bg-center"
+              style={{
+                backgroundImage: `url(${places[currentPlaceIndex].imageData})`
+              }}
+            >
+              <div className="bg-gradient-to-b from-transparent from-5% via-transparent via-65% to-white relative inset-x-0 bottom-0 w-full h-full"></div>
+            </div>
+          ) : null}
 
           <div className="p-4 absolute bottom-0 left-0 text-left">
             <h1
@@ -111,7 +160,8 @@ function Header({ isOpen, setSearchTerm, onSuggestionClick }) {
                   />
                 </svg>
                 <span className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl overflow-hidden whitespace-nowrap text-overflow-ellipsis">
-                  {places[currentPlaceIndex].name}
+                  {places.length > 0 &&
+                    places[currentPlaceIndex].name}
                 </span>
               </div>
             </div>
@@ -125,12 +175,12 @@ function Header({ isOpen, setSearchTerm, onSuggestionClick }) {
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
-                class="w-12 h-12"
+                className="w-12 h-12"
               >
                 <path
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
                   d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-4.28 9.22a.75.75 0 0 0 0 1.06l3 3a.75.75 0 1 0 1.06-1.06l-1.72-1.72h5.69a.75.75 0 0 0 0-1.5h-5.69l1.72-1.72a.75.75 0 0 0-1.06-1.06l-3 3Z"
-                  clip-rule="evenodd"
+                  clipRule="evenodd"
                 />
               </svg>
             </button>
@@ -142,12 +192,12 @@ function Header({ isOpen, setSearchTerm, onSuggestionClick }) {
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
-                class="w-12 h-12"
+                className="w-12 h-12"
               >
                 <path
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
                   d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm4.28 10.28a.75.75 0 0 0 0-1.06l-3-3a.75.75 0 1 0-1.06 1.06l1.72 1.72H8.25a.75.75 0 0 0 0 1.5h5.69l-1.72 1.72a.75.75 0 1 0 1.06 1.06l3-3Z"
-                  clip-rule="evenodd"
+                  clipRule="evenodd"
                 />
               </svg>
             </button>
