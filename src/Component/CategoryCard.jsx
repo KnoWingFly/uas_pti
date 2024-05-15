@@ -87,6 +87,19 @@ const CategoryCard = ({ searchTerm }) => {
               )}
             </div>
 
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center mx-4 md:mx-8 lg:mx-16">
+        {filteredPlaces.map((place, index) => (
+          <motion.div
+            key={index}
+            whileHover={{ scale: 1.05 }}
+            className="relative w-50 h-50 md:h-60 lg:h-70 rounded-lg shadow-lg m-2 overflow-hidden group bg-black"
+            onClick={() => handleClick(place)}
+          >
+            <img
+              className="w-full h-full object-cover rounded transition duration-300 group-hover:opacity-50 scale-100 group-hover:scale-110 ease-in-out aspect-video"
+              src={place.image}
+              alt={place.name}
+            />
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center mx-4 md:mx-8 lg:mx-16">
               {filteredPlaces.map((place, index) => (
                 <div
@@ -107,6 +120,13 @@ const CategoryCard = ({ searchTerm }) => {
                     </p>
                   </div>
 
+            <div className="font-bold text-xs text-white ms-2 mb-1 absolute bottom-0 left-0 bg-black opacity-80 rounded-full px-3">
+              {place.name}
+            </div>
+            
+          </motion.div>
+        ))}
+      </div>
                   <div className="font-bold text-xs text-white ms-2 mb-1 absolute bottom-0 left-0 bg-black opacity-80 rounded-full px-3">
                     {place.name}
                   </div>
