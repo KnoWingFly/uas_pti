@@ -39,13 +39,15 @@ function Header({ isOpen, setSearchTerm, onSuggestionClick }) {
   };
 
   useEffect(() => {
-    const fetchPlacesWithImages = async () => {
+    const fetchData = async () => {
       try {
         const response = await axios.get('https://api-sumatra.vercel.app/places');
-        const placesData = response.data;
+        const apiPlaces = response.data;
+        const sortedPlaces = apiPlaces.sort((a, b) => b.rating - a.rating);
+        const top5Places = sortedPlaces.slice(0, 5);
 
         // Fetch images for each place
-        const placesWithImages = await Promise.all(placesData.map(async (place) => {
+        const placesWithImages = await Promise.all(top5Places.map(async (place) => {
           try {
             const imageResponse = await axios.get(`https://api-sumatra.vercel.app/img/${place.image}`, {
               responseType: 'blob' // Specify responseType as blob
@@ -76,35 +78,12 @@ function Header({ isOpen, setSearchTerm, onSuggestionClick }) {
 
         setPlaces(placesWithImages);
       } catch (error) {
-        console.error('Error fetching places:', error);
+        console.error("Error fetching data:", error);
       }
     };
 
-    fetchPlacesWithImages();
+    fetchData();
   }, []);
-
-  useEffect(() => {
-    const bgCurrent = bgRef.current;
-    const textCurrent = textRef.current;
-    const discoverCurrent = discoverRef.current;
-
-    const timer = setTimeout(() => {
-      if (bgCurrent && textCurrent && discoverCurrent) {
-        gsap.to([bgCurrent, textCurrent, discoverCurrent], {
-          opacity: 0,
-          duration: 1,
-          onComplete: nextPlace
-        });
-      }
-    }, 5000);
-
-    return () => {
-      clearTimeout(timer);
-      if (bgCurrent && textCurrent && discoverCurrent) {
-        gsap.killTweensOf([bgCurrent, textCurrent, discoverCurrent]);
-      }
-    };
-  }, [nextPlace]);
 
   return (
     <div className="relative min-h-[75vh]">
@@ -115,7 +94,7 @@ function Header({ isOpen, setSearchTerm, onSuggestionClick }) {
       />
       <div className="relative min-h-[75vh] flex flex-col justify-center items-start">
         <div>
-          {places.length > 0 && places[currentPlaceIndex].imageData ? (
+          {places.length > 0 && places[currentPlaceIndex] ? (
             <div
               ref={bgRef}
               className="absolute inset-0 bg-cover bg-center"
@@ -160,8 +139,7 @@ function Header({ isOpen, setSearchTerm, onSuggestionClick }) {
                   />
                 </svg>
                 <span className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl overflow-hidden whitespace-nowrap text-overflow-ellipsis">
-                  {places.length > 0 &&
-                    places[currentPlaceIndex].name}
+                  {places.length > 0 && places[currentPlaceIndex].name}
                 </span>
               </div>
             </div>
