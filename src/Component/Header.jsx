@@ -43,26 +43,20 @@ function Header({ isOpen, setSearchTerm, onSuggestionClick }) {
       try {
         const response = await axios.get('https://api-sumatra.vercel.app/places');
         const apiPlaces = response.data;
+        console.log(apiPlaces); // Check if data is fetched successfully
         const sortedPlaces = apiPlaces.sort((a, b) => b.rating - a.rating);
         const top5Places = sortedPlaces.slice(0, 5);
-
-        // Fetch images for each place
         const placesWithImages = await Promise.all(top5Places.map(async (place) => {
           try {
             const imageResponse = await axios.get(`https://api-sumatra.vercel.app/img/${place.image}`, {
-              responseType: 'blob' // Specify responseType as blob
+              responseType: 'blob'
             });
 
-            // Create a FileReader object
             const reader = new FileReader();
-
-            // Read the blob as Data URL
             reader.readAsDataURL(imageResponse.data);
 
-            // Return a promise when reading is done
             return new Promise((resolve, reject) => {
               reader.onloadend = () => {
-                // Add the Data URL to the place object
                 place.imageData = reader.result;
                 resolve(place);
               };
@@ -70,7 +64,6 @@ function Header({ isOpen, setSearchTerm, onSuggestionClick }) {
             });
           } catch (error) {
             console.error(`Error fetching image for place ${place.name}:`, error);
-            // If there's an error fetching the image, set imageData to null
             place.imageData = null;
             return place;
           }
@@ -84,6 +77,16 @@ function Header({ isOpen, setSearchTerm, onSuggestionClick }) {
 
     fetchData();
   }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (places.length > 0) {
+        nextPlace();
+      }
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [places, nextPlace]);
 
   return (
     <div className="relative min-h-[75vh]">
@@ -139,7 +142,7 @@ function Header({ isOpen, setSearchTerm, onSuggestionClick }) {
                   />
                 </svg>
                 <span className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl overflow-hidden whitespace-nowrap text-overflow-ellipsis">
-                  {places.length > 0 && places[currentPlaceIndex].name}
+                  {places.length > 0 && places[currentPlaceIndex] && places[currentPlaceIndex].name}
                 </span>
               </div>
             </div>
@@ -157,7 +160,8 @@ function Header({ isOpen, setSearchTerm, onSuggestionClick }) {
               >
                 <path
                   fillRule="evenodd"
-                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-4.28 9.22a.75.75 0 0 0 0 1.06l3 3a.75.75 0 1 0 1.06-1.06l-1.72-1.72h5.69a.75.75 0 0 0 0-1.5h-5.69l1.72-1.72a.75.75 0 0 0-1.06-1.06l-3 3Z"
+                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-4.28 9.22a.75.75 0 0 0 0 1.06l3 3a.75.75 0 1 0 1.06-1.06l-1.72-1.72h5.69a.75.75 0 0 0 0-1.5h-5.69l1.72-1
+                  .72a.75.75 0 0 0-1.06-1.06l-3 3Z"
                   clipRule="evenodd"
                 />
               </svg>
