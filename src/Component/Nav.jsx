@@ -1,24 +1,33 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
-import { Link } from "react-router-dom"; // Tambahkan impor Link
+import { Link, useLocation } from "react-router-dom"; // Add useLocation
+import { useEffect, useState } from "react"; // Import useEffect and useState
 
 const navigation = [
-  { name: "Main", href: "/", current: true },
-  { name: "Category", href: "/category", current: false }, 
+  { name: "Main", href: "/", current: false },
+  { name: "Category", href: "/category", current: false },
   { name: "About Us", href: "/aboutus", current: false },
   { name: "GitHub", href: "https://github.com/KnoWingFly/uas_pti/", current: false },
 ];
 
 function Nav({ isOpen, setIsOpen }) {
+  const location = useLocation(); // Get current location
+  const [currentNav, setCurrentNav] = useState(""); // State to hold current navigation item
+
+  useEffect(() => {
+    // Update currentNav when location changes
+    setCurrentNav(location.pathname);
+  }, [location]);
+
   return (
     <div>
-      {/* Tombol untuk membuka dan menutup navbar */}
+      {/* Toggle button for opening and closing the navbar */}
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="fixed top-0 right-0 m-4 z-50 backdrop-blur-md"
       >
-        <AnimatePresence mode='wait'>
+        <AnimatePresence>
           {isOpen ? (
             <motion.div
               initial={{ opacity: 0 }}
@@ -38,7 +47,7 @@ function Nav({ isOpen, setIsOpen }) {
           )}
         </AnimatePresence>
       </button>
-      {/* Overlay untuk menutup navbar saat diklik */}
+      {/* Overlay to close the navbar when clicked */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -67,12 +76,12 @@ function Nav({ isOpen, setIsOpen }) {
             className="fixed top-0 left-0 h-full w-64 bg-slate-300/75 text-black p-8 z-50"
           >
             <div className="flex flex-col space-y-4">
-              {/* Membuat menu navigasi */}
+              {/* Creating navigation menu */}
               {navigation.map((item) => (
                 <motion.a
                   key={item.name}
                   href={item.href}
-                  className={`text-xl ${item.current ? "font-bold" : ""} hover:text-black`}
+                  className={`text-xl ${currentNav === item.href ? "font-bold" : ""} hover:text-black`}
                   initial={{ x: 50, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   exit={{ x: 50, opacity: 0 }}
@@ -84,7 +93,7 @@ function Nav({ isOpen, setIsOpen }) {
                   }}
                   onClick={(e) => e.stopPropagation()}
                 >
-                  {/* Menggunakan Link untuk mengarahkan ke halaman kategori */}
+                  {/* Using Link to navigate to category page */}
                   {item.name === "Category" ? (
                     <Link to={item.href}>{item.name}</Link>
                   ) : (
