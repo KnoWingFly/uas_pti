@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import { gsap } from "gsap";
 import Search from "./Search";
 import axios from 'axios';
+import { motion } from "framer-motion";
 
 function Header({ isOpen, setSearchTerm, onSuggestionClick }) {
   const [currentPlaceIndex, setCurrentPlaceIndex] = useState(0);
@@ -147,10 +148,12 @@ function Header({ isOpen, setSearchTerm, onSuggestionClick }) {
               </div>
             </div>
           </div>
-          <div className="p-4 flex justify-center items-center absolute inset-0 w-full">
-            <button
+          
+          <div className="p-4 flex justify-center items-center absolute inset-0 w-full" >
+            <motion.button
               onClick={prevPlace}
-              className="absolute left-0 transform -translate-y-1/2 ms-5 bg-green-700 backdrop-blur-md rounded-full"
+              className="absolute left-0 transform -translate-y-1/2 ms-5 mb-10 bg-green-700 backdrop-blur-md rounded-full"
+              whileHover={{ scale: 1.2 }}
             >
               <svg 
                 xmlns="http://www.w3.org/2000/svg"
@@ -167,26 +170,26 @@ function Header({ isOpen, setSearchTerm, onSuggestionClick }) {
 
               </svg>
 
-            </button>
-            <button
+            </motion.button>
+            <motion.button
               onClick={nextPlace}
-              className="absolute right-0 transform -translate-y-1/2 me-5 rotate-180 bg-green-700 backdrop-blur-md rounded-full"
+              className="absolute right-0 transform me-5 mb-10 bg-green-700 backdrop-blur-md rounded-full"
+              whileHover={{ scale: 1.2 }}
             >
               <svg 
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg" 
+                fill="none" viewBox="0 0 24 24"
                 stroke-width="1.5"
-                stroke="white"
-                className="w-12 h-12">
+                stroke="currentColor"
+                class="w-12 h-12">
 
-                <path 
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="m11.25 9-3 3m0 0 3 3m-3-3h7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
 
               </svg>
-            </button>
+            </motion.button>
           </div>
         </div>
       </div>
