@@ -84,13 +84,9 @@ const Popup = ({
           <button
             onClick={() => setIsOpen(false)}
             type="button"
-            className="absolute z-50 top-0 right-0 m-2 inline-flex justify-center rounded-full border border-transparent px-2 py-2 bg-green-700 text-base leading-6 font-medium text-white shadow-sm hover:bg-green-600 focus:outline-none focus:border-green-600 focus:shadow-outline-green transition ease-in-out duration-150 sm:text-sm sm:leading-5"
+            className="absolute top-0 right-0 m-2 inline-flex justify-center rounded-md border border-transparent px-2 py-1 bg-indigo-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition ease-in-out duration-150 sm:text-sm sm:leading-5"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-              <path fill-rule="evenodd" d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
-            </svg>
-
-
+            X
           </button>
 
           <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4 flex flex-col md:flex-row h-full w-full">
@@ -239,22 +235,20 @@ const Popup = ({
 
                   <div className="relative top-0 right-0 m-4 ms-0 flex space-x-4 justify-start">
                     <button
-                      className={`px-3 py-2 rounded-md text-sm font-medium focus:outline-none ${
-                        mapApi === "GOAPI"
+                      className={`px-3 py-2 rounded-md text-sm font-medium focus:outline-none ${mapApi === "GOAPI"
                           ? "bg-indigo-500 text-white"
                           : "text-gray-700 bg-white"
-                      }`}
+                        }`}
                       onClick={() => setMapApi("GOAPI")}
                     >
                       GOAPI
                     </button>
 
                     <button
-                      className={`px-3 py-2 rounded-md text-sm font-medium focus:outline-none ${
-                        mapApi === "GMAP"
+                      className={`px-3 py-2 rounded-md text-sm font-medium focus:outline-none ${mapApi === "GMAP"
                           ? "bg-indigo-500 text-white"
                           : "text-gray-700 bg-white"
-                      }`}
+                        }`}
                       onClick={() => setMapApi("GMAP")}
                     >
                       GMAP
@@ -274,7 +268,7 @@ const Popup = ({
                       )
                     ) : isLoading ? (
                       <div className="flex justify-center items-center h-full">
-                        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-green-600"></div>
+                        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-indigo-500"></div>
                       </div>
                     ) : (
                       <div className="object-contain">
@@ -291,9 +285,9 @@ const Popup = ({
                     <button
                       onClick={handlePrevious}
                       type="button"
-                      className="inline-flex z-99 justify-center rounded-md border border-transparent px-4 py-2 bg-green-700 text-base leading-6 font-medium text-white shadow-sm hover:bg-green-600 focus:outline-none focus:border-green-600 focus:shadow-outline"
+                      className="inline-flex justify-center rounded-md border border-transparent px-4 py-2 bg-green-700 text-base leading-6 font-medium text-white shadow-sm hover:bg-green-600 focus:outline-none focus:border-green-600 focus:shadow-outline"
                     >
-                      Prev
+                      Previous
                     </button>
                   )}
                 </div>
@@ -303,7 +297,7 @@ const Popup = ({
                     <button
                       onClick={handleNext}
                       type="button"
-                      className="ml-4 inline-flex z-99 justify-center rounded-md border border-transparent px-4 py-2 bg-green-700 text-base leading-6 font-medium text-white shadow-sm hover:bg-green-600 focus:outline-none focus:border-green-600 focus:shadow-outline"
+                      className="ml-4 inline-flex justify-center rounded-md border border-transparent px-4 py-2 bg-green-700 text-base leading-6 font-medium text-white shadow-sm hover:bg-green-600 focus:outline-none focus:border-green-600 focus:shadow-outline"
                     >
                       Next
                     </button>
