@@ -84,20 +84,23 @@ const Popup = ({
           <button
             onClick={() => setIsOpen(false)}
             type="button"
-            className="absolute top-0 right-0 m-2 inline-flex justify-center rounded-md border border-transparent px-2 py-1 bg-indigo-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition ease-in-out duration-150 sm:text-sm sm:leading-5"
+            className="absolute z-50 top-0 right-0 m-2 inline-flex justify-center rounded-full border border-transparent px-1 py-1 bg-green-700 text-base leading-6 font-medium text-white shadow-sm hover:bg-green-600 focus:outline-none focus:border-green-700 focus:shadow-outline-green transition ease-in-out duration-150 sm:text-sm sm:leading-5"
           >
-            X
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+              <path fill-rule="evenodd" d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+            </svg>
+
           </button>
 
           <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4 flex flex-col md:flex-row h-full w-full">
-            <div className="w-full md:w-1/2 h-full overflow-auto border-solid border-4 border-gray-600 rounded-xl relative">
+            <div className="w-full md:w-1/2 h-full overflow-auto border-solid border-4 border-green-700 rounded-xl hover:border-green-600 relative">
               <img
                 className="w-full h-full object-cover rounded transition duration-300"
                 src={selectedPlace.imageData}
                 alt={selectedPlace.name}
               />
 
-              <div className="absolute bottom-0 left-0 ms-1 mb-1 xs:text-md sm:text-lg md:text-2xl font-semibold text-gray-900 text-white bg-black rounded-full px-3">
+              <div className="absolute bottom-0 left-0 ms-1 mb-1 xs:text-md sm:text-lg md:text-2xl mb-2 font-semibold text-gray-900 text-white bg-black rounded-full px-3">
                 <h1>{selectedPlace.rating} ⭐</h1>
               </div>
 
@@ -110,7 +113,7 @@ const Popup = ({
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.8 }}
                   transition={{ duration: 0.5 }}
-                  className="p-4 bg-white rounded-lg shadow-lg flex flex-col items-center justify-center"
+                  className="p-4 bg-white overflow-hidden rounded-lg shadow-lg flex flex-col items-center justify-center"
                 >
 
                   <h2 className="text-2xl font-semibold text-gray-900 mb-4">
@@ -187,11 +190,11 @@ const Popup = ({
                   </h2>
 
                   <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.8 }}
-                  transition={{ duration: 0.5 }}
-                  className="p-4 bg-white rounded-lg shadow-lg flex flex-col items-center justify-center gap-5"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.8 }}
+                    transition={{ duration: 0.5 }}
+                    className="p-4 bg-white rounded-lg shadow-lg flex flex-col items-center justify-center gap-5"
                   >
                     <motion.p
                       initial={{ y: 20, opacity: 0 }}
@@ -233,25 +236,25 @@ const Popup = ({
 
                   {/* <h1 className="absolute bottom-0 left-0 mb-5 ms-10 text-2xl font-semibold text-gray-900 text-white">{selectedPlace.rating} ⭐</h1> */}
 
-                  <div className="relative top-0 right-0 m-4 ms-0 flex space-x-4 justify-start">
-                    <button
-                      className={`px-3 py-2 rounded-md text-sm font-medium focus:outline-none ${mapApi === "GOAPI"
-                          ? "bg-indigo-500 text-white"
-                          : "text-gray-700 bg-white"
-                        }`}
-                      onClick={() => setMapApi("GOAPI")}
-                    >
-                      GOAPI
-                    </button>
-
+                  <div className="relative top-0 z-50 right-0 m-4 ms-0 flex space-x-4 justify-start">
                     <button
                       className={`px-3 py-2 rounded-md text-sm font-medium focus:outline-none ${mapApi === "GMAP"
-                          ? "bg-indigo-500 text-white"
-                          : "text-gray-700 bg-white"
+                      ? "bg-green-700 text-white hover:bg-green-600 hover:text-white"
+                      : "text-gray-700 bg-white hover:bg-green-600 hover:text-white"
                         }`}
                       onClick={() => setMapApi("GMAP")}
                     >
                       GMAP
+                    </button>
+
+                    <button
+                      className={`px-3 py-2 rounded-md text-sm font-medium focus:outline-none ${mapApi === "GOAPI"
+                        ? "bg-green-700 text-white border border-gray-200 hover:bg-green-600 hover:text-white"
+                        : "text-gray-700 bg-white border border-gray-200 hover:bg-green-600 hover:text-white"
+                        }`}
+                      onClick={() => setMapApi("GOAPI")}
+                    >
+                      GOAPI
                     </button>
                   </div>
 
@@ -268,7 +271,7 @@ const Popup = ({
                       )
                     ) : isLoading ? (
                       <div className="flex justify-center items-center h-full">
-                        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-indigo-500"></div>
+                        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-green-500"></div>
                       </div>
                     ) : (
                       <div className="object-contain">
@@ -287,7 +290,7 @@ const Popup = ({
                       type="button"
                       className="inline-flex justify-center rounded-md border border-transparent px-4 py-2 bg-green-700 text-base leading-6 font-medium text-white shadow-sm hover:bg-green-600 focus:outline-none focus:border-green-600 focus:shadow-outline"
                     >
-                      Previous
+                      Prev
                     </button>
                   )}
                 </div>

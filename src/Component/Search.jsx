@@ -34,7 +34,7 @@ function Search({ onSuggestionClick, isSearchBarVisible }) {
   const handleSuggestionClick = (suggestion) => {
     onSuggestionClick(suggestion);
     setInputValue('');
-    setShowSuggestions(false); 
+    setShowSuggestions(false);
   };
 
   return (
@@ -69,15 +69,26 @@ function Search({ onSuggestionClick, isSearchBarVisible }) {
                 />
               </div>
               {showSuggestions && suggestions.length > 0 && (
-                <div className="absolute top-full left-0 w-full bg-white text-black rounded shadow-lg mt-1">
-                  {suggestions.slice(0, 5).map((suggestion, index) => (
-                    <div key={index} className="p-2 hover:bg-gray-200 cursor-pointer flex items-center" onClick={() => handleSuggestionClick(suggestion)}>
-                      <img src={suggestion.imageData} alt={suggestion.name} className="w-6 h-6 mr-2" />
-                      {suggestion.name}
-                    </div>
-                  ))}
-                </div>
+                <>
+                  <div className="absolute top-full left-0 w-full bg-white/50 backdrop-blur-xl text-black rounded-md shadow-lg mt-1 divide-y divide-gray-200">
+                    {suggestions.slice(0, 5).map((suggestion, index) => (
+                      <div
+                        key={index}
+                        className="p-2 hover:bg-gray-200 cursor-pointer flex items-center"
+                        onClick={() => handleSuggestionClick(suggestion)}
+                      >
+                        <img
+                          src={suggestion.imageData}
+                          alt={suggestion.name}
+                          className="w-8 h-8 mr-2 rounded-full"
+                        />
+                        {suggestion.name}
+                      </div>
+                    ))}
+                  </div>
+                </>
               )}
+
             </div>
           )
         );
