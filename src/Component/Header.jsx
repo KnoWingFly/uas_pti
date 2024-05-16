@@ -150,37 +150,41 @@ function Header({ isOpen, setSearchTerm, onSuggestionClick }) {
           <div className="p-4 flex justify-center items-center absolute inset-0 w-full">
             <button
               onClick={prevPlace}
-              className="absolute left-0 transform -translate-y-1/2 ms-5"
+              className="absolute left-0 transform -translate-y-1/2 ms-5 bg-green-700 backdrop-blur-md rounded-full"
             >
-              <svg
+              <svg 
                 xmlns="http://www.w3.org/2000/svg"
+                fill="none"
                 viewBox="0 0 24 24"
-                fill="currentColor"
-                className="w-12 h-12"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-4.28 9.22a.75.75 0 0 0 0 1.06l3 3a.75.75 0 1 0 1.06-1.06l-1.72-1.72h5.69a.75.75 0 0 0 0-1.5h-5.69l1.72-1
-                  .72a.75.75 0 0 0-1.06-1.06l-3 3Z"
-                  clipRule="evenodd"
-                />
+                stroke-width="1.5"
+                stroke="white"
+                className="w-12 h-12">
+
+                <path 
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="m11.25 9-3 3m0 0 3 3m-3-3h7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+
               </svg>
+
             </button>
             <button
               onClick={nextPlace}
-              className="absolute right-0 transform -translate-y-1/2 me-5"
+              className="absolute right-0 transform -translate-y-1/2 me-5 rotate-180 bg-green-700 backdrop-blur-md rounded-full"
             >
-              <svg
+              <svg 
                 xmlns="http://www.w3.org/2000/svg"
+                fill="none"
                 viewBox="0 0 24 24"
-                fill="currentColor"
-                className="w-12 h-12"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm4.28 10.28a.75.75 0 0 0 0-1.06l-3-3a.75.75 0 1 0-1.06 1.06l1.72 1.72H8.25a.75.75 0 0 0 0 1.5h5.69l-1.72 1.72a.75.75 0 1 0 1.06 1.06l3-3Z"
-                  clipRule="evenodd"
-                />
+                stroke-width="1.5"
+                stroke="white"
+                className="w-12 h-12">
+
+                <path 
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="m11.25 9-3 3m0 0 3 3m-3-3h7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+
               </svg>
             </button>
           </div>

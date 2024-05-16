@@ -96,9 +96,9 @@ function Nav({ isOpen, setIsOpen, setLanguage, language }) {
                 </motion.a>
               ))}
             </div>
-            <div className="mt-8">
+            <div className="mt-8 flex justify-center">
               <div
-                className="relative w-24 h-10 bg-gray-600 rounded-full shadow-inner flex items-center justify-center cursor-pointer"
+                className="relative w-24 h-10 bg-gray-600 rounded-full shadow-inner flex items-center justify-start cursor-pointer"
                 onClick={toggleLanguage}
               >
                 <motion.div
