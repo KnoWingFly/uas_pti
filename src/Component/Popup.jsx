@@ -84,12 +84,17 @@ const Popup = ({
           </button>
 
           <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4 flex flex-col md:flex-row h-full w-full">
-            <div className="w-full md:w-1/2 h-full overflow-auto border-solid border-4 border-gray-600 rounded-xl">
+            <div className="w-full md:w-1/2 h-full overflow-auto border-solid border-4 border-gray-600 rounded-xl relative">
               <img
                 className="w-full h-full object-cover rounded transition duration-300"
                 src={selectedPlace.imageData}
                 alt={selectedPlace.name}
               />
+
+              <div className="absolute bottom-0 left-0 ms-1 mb-1 xs:text-md sm:text-lg md:text-2xl font-semibold text-gray-900 text-white bg-black rounded-full px-3">
+                <h1>{selectedPlace.rating} ⭐</h1>
+              </div>
+
             </div>
 
             <div className="w-full md:w-1/2 h-full overflow-auto p-4">
@@ -262,9 +267,9 @@ const Popup = ({
               </div>
             </div>
             
-            <div className="absolute bottom-0 left-0 mb-5 ms-7 text-2xl font-semibold text-gray-900 text-white bg-black rounded-full px-3">
+            {/* <div className="absolute bottom-0 left-0 mb-5 ms-7 text-2xl font-semibold text-gray-900 text-white bg-black rounded-full px-3">
               <h1>{selectedPlace.rating} ⭐</h1>
-            </div>
+            </div> */}
 
           </div>
         </motion.div>
