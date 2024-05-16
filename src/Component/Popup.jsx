@@ -190,11 +190,11 @@ const Popup = ({
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.8 }}
                     transition={{ duration: 0.5 }}
-                    className="leading-6 font-medium text-gray-900 text-2xl font-semibold text-gray-900 mb-4 justify-center flex">
+                    className="leading-6 font-medium text-gray-900 text-2xl font-semibold text-gray-900 mb-4 justify-center flex mt-3 md:mt-0">
                     Reviews
                   </motion.h2>
 
-                  <div className="p-4 bg-white rounded-lg flex flex-col items-center gap-5">
+                  <div className="p-4 bg-white rounded-lg grid grid-cols-2 md:flex md:flex-col items-center gap-5">
 
                     <motion.div
                       initial={{ opacity: 0, scale: 0.8 }}
@@ -324,13 +324,13 @@ const Popup = ({
                 </>
               )}
 
-              <div className="flex md:m-4 justify-between absolute bottom-0 right-0 w-full md:w-2/4 p-6 pb-3 md:p-0 md:pb-0 md:ps-6 z-60">
+              <div className="z-99 flex md:m-4 justify-between absolute bottom-0 right-0 w-full md:w-2/4 p-6 pb-3 md:p-0 md:pb-0 md:ps-6 z-60">
                 <div>
                   {currentPage > 0 && (
                     <button
                       onClick={handlePrevious}
                       type="button"
-                      className="z-50 inline-flex justify-center rounded-md border border-transparent px-4 py-2 bg-green-700 text-base leading-6 font-medium text-white shadow-sm hover:bg-green-600 focus:outline-none focus:border-green-600 focus:shadow-outline"
+                      className="inline-flex justify-center rounded-md border border-transparent px-4 py-2 bg-green-700 text-base leading-6 font-medium text-white shadow-sm hover:bg-green-600 focus:outline-none focus:border-green-600 focus:shadow-outline"
                     >
                       Prev
                     </button>
@@ -342,7 +342,7 @@ const Popup = ({
                     <button
                       onClick={handleNext}
                       type="button"
-                      className="z-50 ml-4 inline-flex justify-center rounded-md border border-transparent px-4 py-2 bg-green-700 text-base leading-6 font-medium text-white shadow-sm hover:bg-green-600 focus:outline-none focus:border-green-600 focus:shadow-outline"
+                      className="ml-4 inline-flex justify-center rounded-md border border-transparent px-4 py-2 bg-green-700 text-base leading-6 font-medium text-white shadow-sm hover:bg-green-600 focus:outline-none focus:border-green-600 focus:shadow-outline"
                     >
                       Next
                     </button>
