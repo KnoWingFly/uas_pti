@@ -49,8 +49,8 @@ const CategoryCard = ({ searchTerm, language }) => {
                 <button
                   key={index}
                   className={`px-2 py-1 md:px-4 md:py-2 rounded-md ${selectedCategory === category
-                      ? "bg-green-600 text-white border border-gray-200 hover:bg-green-700 hover:text-white"
-                      : "bg-gray-200 text-gray-800 border border-gray-200 hover:bg-green-700 hover:text-white"
+                      ? "transition ease-in-out delay-75 bg-green-700 text-white hover:-translate-y-0.5 hover:scale-110 hover:bg-green-600 hover:text-white duration-150"
+                      : "transition ease-in-out delay-75 bg-gray-200 text-gray-800 hover:-translate-y-0.5 hover:scale-110 hover:bg-green-600 hover:text-white duration-150"
                     }`}
                   onClick={() => setSelectedCategory(category)}
                 >
@@ -78,7 +78,7 @@ const CategoryCard = ({ searchTerm, language }) => {
                     onClick={() => handleClick(place)}
                   >
                     <img
-                      className="w-full h-full object-cover rounded transition duration-300 group-hover:opacity-50 scale-100 group-hover:scale-110 ease-in-out aspect-video"
+                      className=" w-full h-full object-cover rounded transition duration-300 group-hover:opacity-50 scale-100 group-hover:scale-110 ease-in-out aspect-video"
                       src={place.imageData}
                       alt={place.name}
                     />
