@@ -16,6 +16,9 @@ const Popup = ({
   const [isLoading, setIsLoading] = useState(false);
   const [mapApi, setMapApi] = useState("GOAPI");
   const [description, setDescription] = useState("");
+  const [review1, setReview1] = useState("");
+  const [review2, setReview2] = useState("");
+  const [review3, setReview3] = useState("");
 
   useEffect(() => {
     setIsLoading(true);
@@ -45,6 +48,9 @@ const Popup = ({
         });
 
       setDescription(selectedPlace.description);
+      setReview1(selectedPlace.review1.review);
+      setReview2(selectedPlace.review2.review);
+      setReview3(selectedPlace.review3.review);
     }
   }, [selectedPlace]);
 
@@ -64,7 +70,7 @@ const Popup = ({
           exit={{ scale: 0 }}
           className="fixed inset-0 transition-opacity"
         >
-        <div className="absolute overlay inset-0 bg-gray-500 opacity-75 z-70"></div>
+          <div className="absolute overlay inset-0 bg-gray-500 opacity-75 z-70"></div>
 
         </motion.div>
         <span className="hidden sm:inline-block sm:align-middle sm:h-screen"></span>
@@ -106,7 +112,7 @@ const Popup = ({
                   transition={{ duration: 0.5 }}
                   className="p-4 bg-white rounded-lg shadow-lg flex flex-col items-center justify-center"
                 >
-                  
+
                   <h2 className="text-2xl font-semibold text-gray-900 mb-4">
                     Description
                   </h2>
@@ -175,12 +181,47 @@ const Popup = ({
 
               {currentPage === 1 && (
                 <div>
+
                   <h2 className="text-lg leading-6 font-medium text-gray-900">
-                    Images
+                    Reviews
                   </h2>
 
-                  {/* <h1 className="absolute bottom-0 left-0 mb-5 ms-10 text-2xl font-semibold text-gray-900 text-white">{selectedPlace.rating} ⭐</h1> */}
-                  <p>{selectedPlace.moreImages}</p>
+                  <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  transition={{ duration: 0.5 }}
+                  className="p-4 bg-white rounded-lg shadow-lg flex flex-col items-center justify-center gap-5"
+                  >
+                    <motion.p
+                      initial={{ y: 20, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      transition={{ delay: 0.3, duration: 0.5 }}
+                      className="text-lg text-gray-800"
+                    >
+                      {selectedPlace.review1.rating} ⭐ {review1}
+                    </motion.p>
+
+                    <motion.p
+                      initial={{ y: 20, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      transition={{ delay: 0.3, duration: 0.5 }}
+                      className="text-lg text-gray-800"
+                    >
+                      {selectedPlace.review2.rating} ⭐ {review2}
+                    </motion.p>
+
+                    <motion.p
+                      initial={{ y: 20, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      transition={{ delay: 0.3, duration: 0.5 }}
+                      className="text-lg text-gray-800"
+                    >
+                      {selectedPlace.review3.rating} ⭐ {review3}
+                    </motion.p>
+
+                  </motion.div>
+
                 </div>
               )}
 
@@ -194,22 +235,20 @@ const Popup = ({
 
                   <div className="relative top-0 right-0 m-4 ms-0 flex space-x-4 justify-start">
                     <button
-                      className={`px-3 py-2 rounded-md text-sm font-medium focus:outline-none ${
-                        mapApi === "GOAPI"
+                      className={`px-3 py-2 rounded-md text-sm font-medium focus:outline-none ${mapApi === "GOAPI"
                           ? "bg-indigo-500 text-white"
                           : "text-gray-700 bg-white"
-                      }`}
+                        }`}
                       onClick={() => setMapApi("GOAPI")}
                     >
                       GOAPI
                     </button>
 
                     <button
-                      className={`px-3 py-2 rounded-md text-sm font-medium focus:outline-none ${
-                        mapApi === "GMAP"
+                      className={`px-3 py-2 rounded-md text-sm font-medium focus:outline-none ${mapApi === "GMAP"
                           ? "bg-indigo-500 text-white"
                           : "text-gray-700 bg-white"
-                      }`}
+                        }`}
                       onClick={() => setMapApi("GMAP")}
                     >
                       GMAP
@@ -266,7 +305,7 @@ const Popup = ({
                 </div>
               </div>
             </div>
-            
+
             {/* <div className="absolute bottom-0 left-0 mb-5 ms-7 text-2xl font-semibold text-gray-900 text-white bg-black rounded-full px-3">
               <h1>{selectedPlace.rating} ⭐</h1>
             </div> */}
@@ -279,4 +318,3 @@ const Popup = ({
 };
 
 export default Popup;
-  
