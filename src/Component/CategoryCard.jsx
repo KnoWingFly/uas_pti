@@ -11,7 +11,7 @@ const CategoryCard = ({ searchTerm, language }) => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [showCategories, setShowCategories] = useState(false);
 
-  // Inisialisasi selectedCategory dengan "All" menggunakan useEffect
+  // Initialize selectedCategory with "All" using useEffect
   useEffect(() => {
     setSelectedCategory("All");
   }, []);
@@ -38,49 +38,30 @@ const CategoryCard = ({ searchTerm, language }) => {
   return (
     <DataAPI language={language}>
       {(places) => {
-        // Ambil kategori dari API
+        // Extract categories from API response
         const categories = ["All", ...new Set(places.map((place) => place.category))];
 
         return (
           <div className="mt-5" id="categoryBody">
-            {/* Tampilkan tombol kategori */}
-            <div className="relative inline-block text-left mb-4 mt-2 z-10">
-              <button
-                className="px-4 py-2 flex ms-6 rounded-md bg-green-600 hover:bg-green-700 text-white"
-                onClick={() => setShowCategories(!showCategories)}
-              >
-                Category
-              </button>
-              {showCategories && (
-                <div className="origin-top-right rounded-md absolute left-0 mt-2 w-48 ms-6 shadow-lg bg-black/55 backdrop-blur-md ring-1 ring-black ring-opacity-5 focus:outline-none z-[15]">
-                  <div
-                    className="py-0"
-                    role="menu"
-                    aria-orientation="vertical"
-                    aria-labelledby="options-menu"
-                  >
-                    {categories.map((category, index) => (
-                      <button
-                        key={index}
-                        className={`block rounded-md px-2 py-2 text-sm text-white hover:bg-green-700 hover:rounded-md w-full text-left ${
-                          selectedCategory === category ? "bg-green-600 text-white" : ""
-                        }`}
-                        onClick={() => {
-                          setSelectedCategory(category);
-                          setShowCategories(false);
-                        }}
-                        role="menuitem"
-                      >
-                        {category}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
+            {/* Display selected category on a strip */}
+            <div className="flex justify-center flex-wrap mb-4 mt-8 gap-2 md:gap-4">
+              {categories.map((category, index) => (
+                <button
+                  key={index}
+                  className={`px-2 py-1 md:px-4 md:py-2 rounded-md ${selectedCategory === category
+                      ? "bg-green-600 text-white border border-gray-200 hover:bg-green-700 hover:text-white"
+                      : "bg-gray-200 text-gray-800 border border-gray-200 hover:bg-green-700 hover:text-white"
+                    }`}
+                  onClick={() => setSelectedCategory(category)}
+                >
+                  {category}
+                </button>
+              ))}
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center mt-20 mx-10 md:mx-20 lg:mx-30 row-start-6">
-              {/* Tampilkan tempat sesuai kategori yang dipilih */}
+
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center mt-10 mx-10 md:mx-20 lg:mx-30 row-start-6">
+              {/* Display places based on the selected category and search term */}
               {places
                 .filter(
                   (place) =>
@@ -115,6 +96,7 @@ const CategoryCard = ({ searchTerm, language }) => {
                 ))}
             </div>
 
+            {/* Render the popup component when isOpen is true */}
             <AnimatePresence>
               {isOpen && (
                 <Popup
