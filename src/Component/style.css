@@ -48,7 +48,7 @@ body {
     padding: 20px;
     justify-content: center;
     align-items: center;
-    filter: grayscale(1);
+    filter: grayscale(10);
 }
 .swiper-pagination{
     filter:grayscale(10);

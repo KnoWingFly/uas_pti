@@ -10,6 +10,9 @@ import 'swiper/css/pagination';
 import './style.css';
 
 import stevjo from "../img/stevjo.jpeg";
+import fernando from "../img/fernando.jpg";
+import virya from "../img/virya.png";
+import fabian from "../img/fabian.jpg";
 // import required modules
 import { EffectCoverflow, Pagination } from 'swiper/modules';
 import Nav from "./Nav";
@@ -44,24 +47,24 @@ export default function App() {
 
 
                 <SwiperSlide className='flex flex-col items-center'>
-                    <img src={stevjo} className='mt-10px' />
-                    <h1 className='text-white text-center mt-1 font-bold text-xl'>Steven Jonathan</h1>
-                    <h1 className='text-white text-center font-extralight'>00000087645</h1>
+                    <img src={virya} className='mt-10px' />
+                    <h1 className='text-white text-center font-bold text-base'>Anggatha Chandra Virya</h1>
+                    <h1 className='text-white text-center font-extralight'>00000082588</h1>
+                </SwiperSlide>
+                <SwiperSlide className='flex flex-col items-center'>
+                    <img src={fernando} className='mt-10px' />
+                    <h1 className='text-white text-center font-bold text-base'>Fernando Sunarto</h1>
+                    <h1 className='text-white text-center font-extralight'>00000083441</h1>
                 </SwiperSlide>
                 <SwiperSlide className='flex flex-col items-center'>
                     <img src={stevjo} className='mt-10px' />
-                    <h1 className='text-white text-center mt-1 font-bold text-xl'>Steven Jonathan</h1>
+                    <h1 className='text-white text-center font-bold text-base'>Steven Jonathan</h1>
                     <h1 className='text-white text-center font-extralight'>00000087645</h1>
                 </SwiperSlide>
                 <SwiperSlide className='flex flex-col items-center'>
-                    <img src={stevjo} className='mt-10px' />
-                    <h1 className='text-white text-center mt-1 font-bold text-xl'>Steven Jonathan</h1>
-                    <h1 className='text-white text-center font-extralight'>00000087645</h1>
-                </SwiperSlide>
-                <SwiperSlide className='flex flex-col items-center'>
-                    <img src={stevjo} className='mt-10px' />
-                    <h1 className='text-white text-center mt-1 font-bold text-xl'>Steven Jonathan</h1>
-                    <h1 className='text-white text-center font-extralight'>00000087645</h1>
+                    <img src={fabian} className='mt-10px' />
+                    <h1 className='text-white text-center font-bold text-base'>Fabian Dustin Candra</h1>
+                    <h1 className='text-white text-center font-extralight'>00000087657</h1>
                 </SwiperSlide>
             </Swiper>
             <div className='mt-auto'>
