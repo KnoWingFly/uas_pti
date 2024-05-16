@@ -67,7 +67,7 @@ function Nav({ isOpen, setIsOpen, setLanguage, language }) {
               stiffness: 120,
               ease: "easeInOut",
             }}
-            className="fixed top-0 left-0 h-full w-64 bg-slate-300/75 text-black p-8 z-50"
+            className="fixed top-0 left-0 h-full w-64 bg-slate-300/75 text-black p-8 z-50 flex flex-col justify-between"
           >
             <div className="flex flex-col space-y-4">
               {navigation.map((item) => (
@@ -96,9 +96,9 @@ function Nav({ isOpen, setIsOpen, setLanguage, language }) {
                 </motion.a>
               ))}
             </div>
-            <div className="mt-8 flex justify-center items-center">
+            <div className="mt-8">
               <div
-                className="relative w-24 h-10 bg-gray-400 rounded-full shadow-inner flex items-center cursor-pointer"
+                className="relative w-24 h-10 bg-gray-600 rounded-full shadow-inner flex items-center justify-center cursor-pointer"
                 onClick={toggleLanguage}
               >
                 <motion.div
