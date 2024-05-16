@@ -54,7 +54,7 @@ const Card = ({ searchTerm, language }) => {
                     {place.shortDesc}
                   </p>
                 </div>
-                <div className="font-bold text-xs text-white ms-2 mb-1 absolute bottom-0 left-0 bg-black opacity-80 rounded-full px-3">
+                <div className="font-bold text-white ms-2 mb-1 absolute bottom-0 left-0 bg-black opacity-80 rounded-full px-3">
                   {place.name}
                 </div>
               </motion.div>

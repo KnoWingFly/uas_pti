@@ -48,9 +48,9 @@ const Popup = ({
         });
 
       setDescription(selectedPlace.description);
-      {/* setReview1(selectedPlace.review1.review);
+      setReview1(selectedPlace.review1.review);
       setReview2(selectedPlace.review2.review);
-      setReview3(selectedPlace.review3.review);*/}
+      setReview3(selectedPlace.review3.review);
     }
   }, [selectedPlace]);
 
@@ -185,45 +185,87 @@ const Popup = ({
               {currentPage === 1 && (
                 <div>
 
-                  <h2 className="text-lg leading-6 font-medium text-gray-900">
-                    Reviews
-                  </h2>
-
-                  <motion.div
+                  <motion.h2 
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.8 }}
                     transition={{ duration: 0.5 }}
-                    className="p-4 bg-white rounded-lg shadow-lg flex flex-col items-center justify-center gap-5"
-                  >
-                    <motion.p
-                      initial={{ y: 20, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      transition={{ delay: 0.3, duration: 0.5 }}
-                      className="text-lg text-gray-800"
-                    >
-                      {/*{selectedPlace.review1.rating} ⭐ {review1}*/}
-                    </motion.p>
+                    className="leading-6 font-medium text-gray-900 text-2xl font-semibold text-gray-900 mb-4 justify-center flex">
+                    Reviews
+                  </motion.h2>
 
-                    <motion.p
-                      initial={{ y: 20, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      transition={{ delay: 0.3, duration: 0.5 }}
-                      className="text-lg text-gray-800"
-                    >
-                      {/* {selectedPlace.review2.rating} ⭐ {review2} */}
-                    </motion.p>
+                  <div className="p-4 bg-white rounded-lg flex flex-col items-center gap-5">
 
-                    <motion.p
-                      initial={{ y: 20, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      transition={{ delay: 0.3, duration: 0.5 }}
-                      className="text-lg text-gray-800"
-                    >
-                      {/* {selectedPlace.review3.rating} ⭐ {review3} */}
-                    </motion.p>
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.8 }}
+                      transition={{ duration: 0.5 }}
+                      className="text-start shadow-lg p-5 rounded-lg h-full w-full relative pb-10">
 
-                  </motion.div>
+                      <div className="absolute bottom-0 right-0 text-xs mb-2 font-semibold text-black px-3">
+                          {selectedPlace.review1.rating} ⭐
+                      </div>
+
+                      <motion.p
+                        initial={{ y: 20, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ delay: 0.3, duration: 0.5 }}
+                        className="text-lg text-gray-800">
+                        
+                        {review1}
+
+                      </motion.p>
+
+                    </motion.div>
+
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.8 }}
+                      transition={{ duration: 0.5 }}
+                      className="text-start shadow-lg p-5 rounded-lg h-full w-full relative pb-10">
+
+                      <div className="absolute bottom-0 right-0 text-xs mb-2 font-semibold text-black px-3">
+                          {selectedPlace.review2.rating} ⭐
+                      </div>
+
+                      <motion.p
+                        initial={{ y: 20, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ delay: 0.3, duration: 0.5 }}
+                        className="text-lg text-gray-800">
+                        
+                        {review2}
+
+                      </motion.p>
+
+                    </motion.div>
+
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.8 }}
+                      transition={{ duration: 0.5 }}
+                      className="text-start shadow-lg p-5 rounded-lg h-full w-full relative pb-10">
+
+                      <div className="absolute bottom-0 right-0 text-xs mb-2 font-semibold text-black px-3">
+                          {selectedPlace.review3.rating} ⭐
+                      </div>
+
+                      <motion.p
+                        initial={{ y: 20, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ delay: 0.3, duration: 0.5 }}
+                        className="text-lg text-gray-800">
+                        
+                        {review3}
+
+                      </motion.p>
+
+                    </motion.div>
+
+                  </div>
 
                 </div>
               )}
@@ -288,7 +330,7 @@ const Popup = ({
                     <button
                       onClick={handlePrevious}
                       type="button"
-                      className="inline-flex justify-center rounded-md border border-transparent px-4 py-2 bg-green-700 text-base leading-6 font-medium text-white shadow-sm hover:bg-green-600 focus:outline-none focus:border-green-600 focus:shadow-outline"
+                      className="z-50 inline-flex justify-center rounded-md border border-transparent px-4 py-2 bg-green-700 text-base leading-6 font-medium text-white shadow-sm hover:bg-green-600 focus:outline-none focus:border-green-600 focus:shadow-outline"
                     >
                       Prev
                     </button>
@@ -300,7 +342,7 @@ const Popup = ({
                     <button
                       onClick={handleNext}
                       type="button"
-                      className="ml-4 inline-flex justify-center rounded-md border border-transparent px-4 py-2 bg-green-700 text-base leading-6 font-medium text-white shadow-sm hover:bg-green-600 focus:outline-none focus:border-green-600 focus:shadow-outline"
+                      className="z-50 ml-4 inline-flex justify-center rounded-md border border-transparent px-4 py-2 bg-green-700 text-base leading-6 font-medium text-white shadow-sm hover:bg-green-600 focus:outline-none focus:border-green-600 focus:shadow-outline"
                     >
                       Next
                     </button>
