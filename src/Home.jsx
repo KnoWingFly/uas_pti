@@ -1,24 +1,26 @@
-import React, { useState } from "react";
-const Nav = React.lazy(() => import("./Component/Nav.jsx"));
-const Header = React.lazy(() => import("./Component/Header.jsx"));
-const Card = React.lazy(() => import("./Component/card.jsx"));
-const Footer = React.lazy(() => import("./Component/Footer.jsx"));
-const Popup = React.lazy(() => import("./Component/Popup.jsx"));
-const Search = React.lazy(() => import("./Component/Search.jsx"));
+import React, { useState, useContext } from "react";
+import Nav from "./Component/Nav.jsx";
+import Header from "./Component/Header.jsx";
+import Card from "./Component/card.jsx";
+import Footer from "./Component/Footer.jsx";
+import Popup from "./Component/Popup.jsx";
+import Search from "./Component/Search.jsx";
+import { LanguageContext } from "./Component/LanguageContent.js";
 
-const Home = () =>   {
-  const [isOpenNav, setIsOpenNav] = useState(false); 
+const Home = () => {
+  const [isOpenNav, setIsOpenNav] = useState(false);
   const [selectedPlace, setSelectedPlace] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
-  const [currentPage, setCurrentPage] = useState(0); 
-  const [isOpenPopup, setIsOpenPopup] = useState(false); 
-  const [isSearchBarVisible, setIsSearchBarVisible] = useState(true); 
+  const [currentPage, setCurrentPage] = useState(0);
+  const [isOpenPopup, setIsOpenPopup] = useState(false);
+  const [isSearchBarVisible, setIsSearchBarVisible] = useState(true);
+  const { language, setLanguage } = useContext(LanguageContext);
 
   const handleSuggestionClick = (place) => {
     setSelectedPlace(place);
-    setIsOpenPopup(true); 
-    setIsSearchBarVisible(false); 
-    setIsOpenNav(false); 
+    setIsOpenPopup(true);
+    setIsSearchBarVisible(false);
+    setIsOpenNav(false);
   };
 
   const handleClosePopup = () => {
@@ -38,24 +40,30 @@ const Home = () =>   {
 
   return (
     <div className="App bg-white min-h-screen text-white">
-        <Nav isOpen={isOpenNav} setIsOpen={setIsOpenNav} />
-        <Header isOpen={isOpenNav} onSuggestionClick={handleSuggestionClick} setSearchTerm={setSearchTerm} />
-        <Card searchTerm={searchTerm} />
-        <Footer />
-        <Popup 
-          isOpen={isOpenPopup} 
-          setIsOpen={setIsOpenPopup} 
-          selectedPlace={selectedPlace} 
-          currentPage={currentPage} 
-          handleNext={handleNext} 
-          handlePrevious={handlePrevious} 
-          onClose={handleClosePopup} 
-          setIsSearchBarVisible={setIsSearchBarVisible}
-        />
-        <Search 
-          onSuggestionClick={handleSuggestionClick} 
-          isSearchBarVisible={!isOpenNav && (!isOpenPopup || isSearchBarVisible)} 
-        />
+      <Nav isOpen={isOpenNav} setIsOpen={setIsOpenNav} language={language} setLanguage={setLanguage} />
+      <Header 
+        isOpen={isOpenNav} 
+        onSuggestionClick={handleSuggestionClick} 
+        setSearchTerm={setSearchTerm} 
+        language={language}
+      />
+      <Card searchTerm={searchTerm} language={language} />
+      <Footer />
+      <Popup 
+        isOpen={isOpenPopup} 
+        setIsOpen={setIsOpenPopup} 
+        selectedPlace={selectedPlace} 
+        currentPage={currentPage} 
+        handleNext={handleNext} 
+        handlePrevious={handlePrevious} 
+        onClose={handleClosePopup} 
+        setIsSearchBarVisible={setIsSearchBarVisible}
+      />
+      <Search 
+        onSuggestionClick={handleSuggestionClick} 
+        isSearchBarVisible={!isOpenNav && (!isOpenPopup || isSearchBarVisible)} 
+        language={language}
+      />
     </div>
   );
 }

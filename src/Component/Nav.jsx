@@ -1,28 +1,29 @@
-import React from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useEffect } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
-import { Link, useLocation } from "react-router-dom"; // Add useLocation
-import { useEffect, useState } from "react"; // Import useEffect and useState
+import { Link, useLocation } from "react-router-dom";
 
-const navigation = [
-  { name: "Main", href: "/", current: false },
-  { name: "Category", href: "/category", current: false },
-  { name: "About Us", href: "/aboutus", current: false },
-  { name: "GitHub", href: "https://github.com/KnoWingFly/uas_pti/", current: false },
-];
+function Nav({ isOpen, setIsOpen, setLanguage, language }) {
+  const location = useLocation();
+  const [currentNav, setCurrentNav] = useState("");
 
-function Nav({ isOpen, setIsOpen }) {
-  const location = useLocation(); // Get current location
-  const [currentNav, setCurrentNav] = useState(""); // State to hold current navigation item
+  const toggleLanguage = () => {
+    setLanguage(language === "en" ? "id" : "en");
+  };
 
-  useEffect(() => {
-    // Update currentNav when location changes
+  useEffect(() => { // Define useEffect
     setCurrentNav(location.pathname);
   }, [location]);
 
+  // Define navigation array
+  const navigation = [
+    { name: "Home", href: "/" },
+    { name: "Category", href: "/category" },
+    { name: "About Us", href: "/aboutus" },
+  ];
+
   return (
     <div>
-      {/* Toggle button for opening and closing the navbar */}
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="fixed top-0 right-0 m-4 z-50 backdrop-blur-md"
@@ -47,20 +48,14 @@ function Nav({ isOpen, setIsOpen }) {
           )}
         </AnimatePresence>
       </button>
-      {/* Overlay to close the navbar when clicked */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
+          <div
             className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md z-40"
             onClick={() => setIsOpen(false)}
           />
         )}
       </AnimatePresence>
-      {/* Navbar */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -76,12 +71,13 @@ function Nav({ isOpen, setIsOpen }) {
             className="fixed top-0 left-0 h-full w-64 bg-slate-300/75 text-black p-8 z-50"
           >
             <div className="flex flex-col space-y-4">
-              {/* Creating navigation menu */}
               {navigation.map((item) => (
                 <motion.a
                   key={item.name}
                   href={item.href}
-                  className={`text-xl ${currentNav === item.href ? "font-bold" : ""} hover:text-black`}
+                  className={`text-xl ${
+                    currentNav === item.href ? "font-bold" : ""
+                  } hover:text-black`}
                   initial={{ x: 50, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   exit={{ x: 50, opacity: 0 }}
@@ -93,7 +89,6 @@ function Nav({ isOpen, setIsOpen }) {
                   }}
                   onClick={(e) => e.stopPropagation()}
                 >
-                  {/* Using Link to navigate to category page */}
                   {item.name === "Category" ? (
                     <Link to={item.href}>{item.name}</Link>
                   ) : (
@@ -102,6 +97,13 @@ function Nav({ isOpen, setIsOpen }) {
                 </motion.a>
               ))}
             </div>
+            {/* Language toggle button */}
+            <button
+              onClick={toggleLanguage}
+              className="mt-auto p-2 bg-gray-800 text-white rounded-full shadow-md hover:bg-gray-700 focus:outline-none"
+            >
+              {language === "en" ? "ID" : "EN"}
+            </button>
           </motion.div>
         )}
       </AnimatePresence>

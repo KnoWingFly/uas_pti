@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import Popup from "./Popup.jsx";
 import DataAPI from "./DataAPI.jsx";
 
-const Card = ({ searchTerm }) => {
+const Card = ({ searchTerm, language }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedPlace, setSelectedPlace] = useState(null);
   const [currentPage, setCurrentPage] = useState(0);
@@ -28,7 +28,7 @@ const Card = ({ searchTerm }) => {
   };
 
   return (
-    <DataAPI>
+    <DataAPI language={language}>
       {(places) => (
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center mt-20 mx-10 md:mx-20 lg:mx-30 row-start-6">
           {places
