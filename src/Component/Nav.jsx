@@ -11,11 +11,10 @@ function Nav({ isOpen, setIsOpen, setLanguage, language }) {
     setLanguage(language === "en" ? "id" : "en");
   };
 
-  useEffect(() => { // Define useEffect
+  useEffect(() => {
     setCurrentNav(location.pathname);
   }, [location]);
 
-  // Define navigation array
   const navigation = [
     { name: "Home", href: "/" },
     { name: "Category", href: "/category" },
@@ -97,13 +96,21 @@ function Nav({ isOpen, setIsOpen, setLanguage, language }) {
                 </motion.a>
               ))}
             </div>
-            {/* Language toggle button */}
-            <button
-              onClick={toggleLanguage}
-              className="mt-auto p-2 bg-gray-800 text-white rounded-full shadow-md hover:bg-gray-700 focus:outline-none"
-            >
-              {language === "en" ? "ID" : "EN"}
-            </button>
+            <div className="mt-8 flex justify-center items-center">
+              <div
+                className="relative w-24 h-10 bg-gray-400 rounded-full shadow-inner flex items-center cursor-pointer"
+                onClick={toggleLanguage}
+              >
+                <motion.div
+                  className="absolute w-1/2 h-full bg-gray-800 rounded-full"
+                  initial={{ x: language === "en" ? 0 : "100%" }}
+                  animate={{ x: language === "en" ? 0 : "100%" }}
+                  transition={{ type: "spring", stiffness: 700, damping: 30 }}
+                />
+                <div className="w-1/2 text-center text-white z-10">EN</div>
+                <div className="w-1/2 text-center text-white z-10">ID</div>
+              </div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
