@@ -247,7 +247,7 @@ const Popup = ({
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.8 }}
                       transition={{ duration: 0.5 }}
-                      className="text-start shadow-lg p-5 rounded-lg h-full w-full relative pb-10">
+                      className="text-start shadow-lg p-5 rounded-lg h-full w-full relative pb-10 col-span-2">
 
                       <div className="absolute bottom-0 right-0 text-xs mb-2 font-semibold text-black px-3">
                           {selectedPlace.review3.rating} ⭐
@@ -272,7 +272,7 @@ const Popup = ({
 
               {currentPage === 2 && (
                 <>
-                  <h2 className="text-lg leading-6 font-medium text-gray-900">
+                  <h2 className="text-2xl leading-6 font-medium font-semibold flex justify-center text-gray-900">
                     Map
                   </h2>
 
@@ -303,7 +303,7 @@ const Popup = ({
                   <div className="h-3/4 w-full overflow-auto">
                     {mapApi === "GOAPI" ? (
                       data && data.position ? (
-                        <div className="object-cover">
+                        <div className="object-cover relative z-10">
                           <MapComponent position={data.position} zoom={13} />
                         </div>
                       ) : (
