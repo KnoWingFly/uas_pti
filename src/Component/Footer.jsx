@@ -7,7 +7,7 @@ export default function Footer() {
             <div className="w-full max-w-screen mx-auto p-5 md:py-8">
                 <div className="flex flex-col md:flex-row items-center justify-between">
 
-                    <a href="#" className="flex items-center mb-4 md:mb-0 space-x-3 rtl:space-x-reverse">
+                    <a href="/" className="flex items-center mb-4 md:mb-0 space-x-3 rtl:space-x-reverse">
                         <img src={Logo} className="h-24 md:h-36" alt="Sumatera Utara Logo" />
                         <span className="self-center text-2xl md:text-4xl font-semibold whitespace-nowrap text-white hover:text-green-600">Sumatera Utara</span>
                     </a>
@@ -29,7 +29,7 @@ export default function Footer() {
 
                 </div>
                 <hr className="my-6 sm:mx-auto border-black-700 lg:my-8" />
-                <span className="block text-xs md:text-sm text-center text-white">© 2024 <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" className="hover:text-green-600">Sumatera Utara™</a>. All Rights Reserved.</span>
+                <span className="block text-xs md:text-sm text-center text-white">© 2024 <a href="/" className="hover:text-green-600">Sumatera Utara™</a>. All Rights Reserved.</span>
             </div>
         </footer>
     );
