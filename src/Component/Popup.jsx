@@ -48,9 +48,9 @@ const Popup = ({
         });
 
       setDescription(selectedPlace.description);
-      setReview1(selectedPlace.review1.review);
+      {/* setReview1(selectedPlace.review1.review);
       setReview2(selectedPlace.review2.review);
-      setReview3(selectedPlace.review3.review);
+      setReview3(selectedPlace.review3.review);*/}
     }
   }, [selectedPlace]);
 
@@ -202,7 +202,7 @@ const Popup = ({
                       transition={{ delay: 0.3, duration: 0.5 }}
                       className="text-lg text-gray-800"
                     >
-                      {selectedPlace.review1.rating} ⭐ {review1}
+                      {/*{selectedPlace.review1.rating} ⭐ {review1}*/}
                     </motion.p>
 
                     <motion.p
@@ -211,7 +211,7 @@ const Popup = ({
                       transition={{ delay: 0.3, duration: 0.5 }}
                       className="text-lg text-gray-800"
                     >
-                      {selectedPlace.review2.rating} ⭐ {review2}
+                      {/* {selectedPlace.review2.rating} ⭐ {review2} */}
                     </motion.p>
 
                     <motion.p
@@ -220,7 +220,7 @@ const Popup = ({
                       transition={{ delay: 0.3, duration: 0.5 }}
                       className="text-lg text-gray-800"
                     >
-                      {selectedPlace.review3.rating} ⭐ {review3}
+                      {/* {selectedPlace.review3.rating} ⭐ {review3} */}
                     </motion.p>
 
                   </motion.div>
