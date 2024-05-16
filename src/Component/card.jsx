@@ -35,6 +35,7 @@ const Card = ({ searchTerm, language }) => {
             .filter((place) =>
               place.name.toLowerCase().includes(searchTerm.toLowerCase())
             )
+            
             .map((place, index) => (
               <motion.div
                 key={index}
