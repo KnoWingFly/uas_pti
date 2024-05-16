@@ -52,15 +52,15 @@ const CategoryCard = ({ searchTerm }) => {
             {/* Tampilkan dropdown kategori */}
             <div className="relative inline-block text-left mb-4 mt-2 z-10">
               <button
-                className="px-4 py-2 rounded bg-blue-500 text-white"
+                className="px-4 py-2 flex ms-6 rounded-md bg-green-600 hover:bg-green-700 text-white"
                 onClick={() => setShowCategories(!showCategories)}
               >
                 Category
               </button>
               {showCategories && (
-                <div className="origin-top-right absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-[15]">
+                <div className="origin-top-right rounded-md absolute left-0 mt-2 w-48 ms-6 shadow-lg bg-black/55 backdrop-blur-md ring-1 ring-black ring-opacity-5 focus:outline-none z-[15]">
                   <div
-                    className="py-1"
+                    className="py-0"
                     role="menu"
                     aria-orientation="vertical"
                     aria-labelledby="options-menu"
@@ -68,9 +68,9 @@ const CategoryCard = ({ searchTerm }) => {
                     {categories.map((category, index) => (
                       <button
                         key={index}
-                        className={`block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left ${
+                        className={`block rounded-md px-2 py-2 text-sm text-white hover:bg-green-700 hover:rounded-md w-full text-left ${
                           selectedCategory === category
-                            ? "bg-blue-500 text-white"
+                            ? "bg-green-600 text-white"
                             : ""
                         }`}
                         onClick={() => {
