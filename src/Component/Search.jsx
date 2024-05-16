@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import DataAPI from './DataAPI.jsx';
 
-function Search({ onSuggestionClick, isSearchBarVisible, language, setLanguage }) {
+function Search({ onSuggestionClick, isSearchBarVisible, language}) {
   const [inputValue, setInputValue] = useState('');
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
@@ -37,12 +37,8 @@ function Search({ onSuggestionClick, isSearchBarVisible, language, setLanguage }
     setShowSuggestions(false);
   };
 
-  const toggleLanguage = () => {
-    setLanguage(language === "en" ? "id" : "en");
-  };
-
   return (
-    <DataAPI>
+    <DataAPI language={language}>
       {(places) => {
         setPlaces(places);
         return (
@@ -92,14 +88,6 @@ function Search({ onSuggestionClick, isSearchBarVisible, language, setLanguage }
                 </div>
               </>
             )}
-
-            {/* Language toggle button */}
-            <button
-              onClick={toggleLanguage}
-              className="fixed bottom-4 right-4 p-2 bg-gray-800 text-white rounded-full shadow-md hover:bg-gray-700 focus:outline-none"
-            >
-              {language === "en" ? "ID" : "EN"}
-            </button>
           </div>
         )
       );
