@@ -43,7 +43,7 @@ function Search({ onSuggestionClick, isSearchBarVisible }) {
         setPlaces(places);
         return (
           isSearchBarVisible && (
-            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-1/3 mt-10">
+            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-full sm:w-2/3 md:w-1/2 lg:w-1/3 mt-10 px-4 sm:px-0">
               <div className="flex items-center bg-black/70 backdrop-blur-md rounded-full border border-8 border-double border-white/75 p-2 shadow-2xl">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -69,7 +69,7 @@ function Search({ onSuggestionClick, isSearchBarVisible }) {
                 />
               </div>
               {showSuggestions && suggestions.length > 0 && (
-                <div className="absolute top-full left-0 w-full bg-white text-black rounded shadow-lg">
+                <div className="absolute top-full left-0 w-full bg-white text-black rounded shadow-lg mt-1">
                   {suggestions.slice(0, 5).map((suggestion, index) => (
                     <div key={index} className="p-2 hover:bg-gray-200 cursor-pointer flex items-center" onClick={() => handleSuggestionClick(suggestion)}>
                       <img src={suggestion.imageData} alt={suggestion.name} className="w-6 h-6 mr-2" />

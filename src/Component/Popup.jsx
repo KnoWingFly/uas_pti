@@ -78,7 +78,7 @@ const Popup = ({
           <button
             onClick={() => setIsOpen(false)}
             type="button"
-            className="absolute top-0 right-0 m-2 inline-flex justify-center rounded-md border border-transparent px-2 py-1 bg-indigo-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition ease-in-out duration-150 sm:text-sm sm:leading-5"
+            className="absolute z-50 top-0 right-0 m-2 inline-flex justify-center rounded-md border border-transparent px-2 py-1 bg-green-700 text-base leading-6 font-medium text-white shadow-sm hover:bg-green-600 focus:outline-none focus:border-green-600 focus:shadow-outline-green transition ease-in-out duration-150 sm:text-sm sm:leading-5"
           >
             X
           </button>
@@ -195,24 +195,24 @@ const Popup = ({
                   <div className="relative top-0 right-0 m-4 ms-0 flex space-x-4 justify-start">
                     <button
                       className={`px-3 py-2 rounded-md text-sm font-medium focus:outline-none ${
-                        mapApi === "GOAPI"
-                          ? "bg-indigo-500 text-white"
-                          : "text-gray-700 bg-white"
-                      }`}
-                      onClick={() => setMapApi("GOAPI")}
-                    >
-                      GOAPI
-                    </button>
-
-                    <button
-                      className={`px-3 py-2 rounded-md text-sm font-medium focus:outline-none ${
                         mapApi === "GMAP"
-                          ? "bg-indigo-500 text-white"
+                          ? "bg-green-700 text-white"
                           : "text-gray-700 bg-white"
                       }`}
                       onClick={() => setMapApi("GMAP")}
                     >
                       GMAP
+                    </button>
+
+                    <button
+                      className={`px-3 py-2 rounded-md text-sm font-medium focus:outline-none ${
+                        mapApi === "GOAPI"
+                          ? "bg-green-700 text-white"
+                          : "text-gray-700 bg-white"
+                      }`}
+                      onClick={() => setMapApi("GOAPI")}
+                    >
+                      GOAPI
                     </button>
                   </div>
 
@@ -229,7 +229,7 @@ const Popup = ({
                       )
                     ) : isLoading ? (
                       <div className="flex justify-center items-center h-full">
-                        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-indigo-500"></div>
+                        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-green-600"></div>
                       </div>
                     ) : (
                       <div className="object-contain">
