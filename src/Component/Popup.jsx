@@ -199,8 +199,8 @@ const Popup = ({
                   <div className="relative top-0 right-0 m-4 ms-0 flex space-x-4 justify-start">
                     <button
                       className={`px-3 py-2 rounded-md text-sm font-medium focus:outline-none ${mapApi === "GMAP"
-                          ? "bg-green-700 text-white"
-                          : "text-gray-700 bg-white"
+                          ? "bg-green-700 text-white hover:bg-green-600 hover:text-white"
+                          : "text-gray-700 bg-white hover:bg-green-600 hover:text-white"
                         }`}
                       onClick={() => setMapApi("GMAP")}
                     >
@@ -209,8 +209,8 @@ const Popup = ({
 
                     <button
                       className={`px-3 py-2 rounded-md text-sm font-medium focus:outline-none ${mapApi === "GOAPI"
-                          ? "bg-green-700 text-white"
-                          : "text-gray-700 bg-white"
+                          ? "bg-green-700 text-white hover:bg-green-600 hover:text-white"
+                          : "text-gray-700 bg-white hover:bg-green-600 hover:text-white"
                         }`}
                       onClick={() => setMapApi("GOAPI")}
                     >
