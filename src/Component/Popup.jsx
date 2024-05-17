@@ -116,7 +116,7 @@ const Popup = ({
                   className="p-4 bg-white overflow-hidden rounded-lg shadow-lg flex flex-col items-center justify-center"
                 >
 
-                  <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+                  <h2 className="text-3xl font-semibold text-gray-900 mb-4">
                     Description
                   </h2>
 
@@ -126,7 +126,7 @@ const Popup = ({
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.3, duration: 0.5 }}
-                    className="text-lg text-gray-800"
+                    className="text-xl sm:text-2xl text-gray-800"
                   >
                     {description}
                   </motion.p>
@@ -190,7 +190,7 @@ const Popup = ({
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.8 }}
                     transition={{ duration: 0.5 }}
-                    className="leading-6 font-medium text-gray-900 text-2xl font-semibold text-gray-900 mb-4 justify-center flex mt-3 md:mt-0">
+                    className="leading-6 font-medium text-gray-900 text-3xl font-semibold text-gray-900 mb-4 justify-center flex mt-3 md:mt-0">
                     Reviews
                   </motion.h2>
 
@@ -203,7 +203,7 @@ const Popup = ({
                       transition={{ duration: 0.5 }}
                       className="text-start shadow-lg p-5 rounded-lg h-full w-full relative pb-10 min-w-fit">
 
-                      <div className="absolute bottom-0 right-0 text-xs mb-2 font-semibold text-black px-3">
+                      <div className="absolute bottom-0 right-0 text-lg mb-2 font-semibold text-black px-3">
                         {selectedPlace.review1.rating} ⭐
                       </div>
 
@@ -211,7 +211,7 @@ const Popup = ({
                         initial={{ y: 20, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ delay: 0.3, duration: 0.5 }}
-                        className="text-xs md:text-lg text-gray-800 min-w-fit">
+                        className="text-lg sm:text-xl text-gray-800 min-w-fit">
 
                         {review1}
 
@@ -226,7 +226,7 @@ const Popup = ({
                       transition={{ duration: 0.5 }}
                       className="text-start shadow-lg p-5 rounded-lg h-full w-full relative pb-10 min-w-fit">
 
-                      <div className="absolute bottom-0 right-0 text-xs mb-2 font-semibold text-black px-3">
+                      <div className="absolute bottom-0 right-0 text-lg mb-2 font-semibold text-black px-3">
                         {selectedPlace.review2.rating} ⭐
                       </div>
 
@@ -234,7 +234,7 @@ const Popup = ({
                         initial={{ y: 20, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ delay: 0.3, duration: 0.5 }}
-                        className="text-xs md:text-lg text-gray-800 min-w-fit">
+                        className="text-lg sm:text-xl text-gray-800 min-w-fit">
 
                         {review2}
 
@@ -247,9 +247,9 @@ const Popup = ({
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.8 }}
                       transition={{ duration: 0.5 }}
-                      className="text-start shadow-lg p-5 rounded-lg h-full w-full relative pb-10 col-span-2 min-w-fit">
+                      className="text-start shadow-lg p-5 rounded-lg h-full w-full relative pb-10 col-span-2 min-w-fit mb-10">
 
-                      <div className="absolute bottom-0 right-0 text-xs mb-2 font-semibold text-black px-3">
+                      <div className="absolute bottom-0 right-0 text-lg mb-2 font-semibold text-black px-3">
                         {selectedPlace.review3.rating} ⭐
                       </div>
 
@@ -257,7 +257,7 @@ const Popup = ({
                         initial={{ y: 20, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ delay: 0.3, duration: 0.5 }}
-                        className="text-xs md:text-lg text-gray-800 min-w-fit">
+                        className="text-lg sm:text-xl text-gray-800 min-w-fit">
 
                         {review3}
 
@@ -272,7 +272,7 @@ const Popup = ({
 
               {currentPage === 2 && (
                 <>
-                  <h2 className="text-2xl leading-6 font-medium font-semibold flex justify-center text-gray-900">
+                  <h2 className="text-3xl leading-6 font-medium font-semibold flex justify-center text-gray-900">
                     Map
                   </h2>
 
