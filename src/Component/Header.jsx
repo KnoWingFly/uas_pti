@@ -152,7 +152,7 @@ function Header({ isOpen, setSearchTerm, onSuggestionClick }) {
           <div className="p-4 flex justify-center items-center absolute inset-0 w-full" >
             <motion.button
               onClick={prevPlace}
-              className="absolute left-0 transform -translate-y-1/2 ms-5 mb-10 bg-green-700 backdrop-blur-md rounded-full"
+              className="absolute left-0 transform ms-5 bg-green-700 backdrop-blur-md rounded-full"
               whileHover={{ scale: 1.2 }}
             >
               <svg 
@@ -173,7 +173,7 @@ function Header({ isOpen, setSearchTerm, onSuggestionClick }) {
             </motion.button>
             <motion.button
               onClick={nextPlace}
-              className="absolute right-0 transform me-5 mb-10 bg-green-700 backdrop-blur-md rounded-full"
+              className="absolute right-0 transform me-5 bg-green-700 backdrop-blur-md rounded-full"
               whileHover={{ scale: 1.2 }}
             >
               <svg 

@@ -201,7 +201,7 @@ const Popup = ({
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.8 }}
                       transition={{ duration: 0.5 }}
-                      className="text-start shadow-lg p-5 rounded-lg h-full w-full relative pb-10">
+                      className="text-start shadow-lg p-5 rounded-lg h-full w-full relative pb-10 min-w-fit">
 
                       <div className="absolute bottom-0 right-0 text-xs mb-2 font-semibold text-black px-3">
                           {selectedPlace.review1.rating} ⭐
@@ -211,7 +211,7 @@ const Popup = ({
                         initial={{ y: 20, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ delay: 0.3, duration: 0.5 }}
-                        className="text-lg text-gray-800">
+                        className="text-xs md:text-lg text-gray-800 min-w-fit">
                         
                         {review1}
 
@@ -224,7 +224,7 @@ const Popup = ({
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.8 }}
                       transition={{ duration: 0.5 }}
-                      className="text-start shadow-lg p-5 rounded-lg h-full w-full relative pb-10">
+                      className="text-start shadow-lg p-5 rounded-lg h-full w-full relative pb-10 min-w-fit">
 
                       <div className="absolute bottom-0 right-0 text-xs mb-2 font-semibold text-black px-3">
                           {selectedPlace.review2.rating} ⭐
@@ -234,7 +234,7 @@ const Popup = ({
                         initial={{ y: 20, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ delay: 0.3, duration: 0.5 }}
-                        className="text-lg text-gray-800">
+                        className="text-xs md:text-lg text-gray-800 min-w-fit">
                         
                         {review2}
 
@@ -247,7 +247,7 @@ const Popup = ({
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.8 }}
                       transition={{ duration: 0.5 }}
-                      className="text-start shadow-lg p-5 rounded-lg h-full w-full relative pb-10 col-span-2">
+                      className="text-start shadow-lg p-5 rounded-lg h-full w-full relative pb-10 col-span-2 min-w-fit">
 
                       <div className="absolute bottom-0 right-0 text-xs mb-2 font-semibold text-black px-3">
                           {selectedPlace.review3.rating} ⭐
@@ -257,7 +257,7 @@ const Popup = ({
                         initial={{ y: 20, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ delay: 0.3, duration: 0.5 }}
-                        className="text-lg text-gray-800">
+                        className="text-xs md:text-lg text-gray-800 min-w-fit">
                         
                         {review3}
 

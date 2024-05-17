@@ -60,7 +60,7 @@ const CategoryCard = ({ searchTerm, language }) => {
             </div>
 
 
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center mt-10 mx-10 md:mx-20 lg:mx-30 row-start-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 justify-center mt-10 mx-10 md:mx-20 lg:mx-30 row-start-6">
               {/* Display places based on the selected category and search term */}
               {places
                 .filter(
