@@ -14,7 +14,7 @@ const Popup = ({
 }) => {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [mapApi, setMapApi] = useState("GOAPI");
+  const [mapApi, setMapApi] = useState("GMAP");
   const [description, setDescription] = useState("");
   const [review1, setReview1] = useState("");
   const [review2, setReview2] = useState("");
@@ -300,7 +300,7 @@ const Popup = ({
                     </button>
                   </div>
 
-                  <div className="h-3/4 w-full overflow-auto">
+                  <div className="h-3/4 w-full overflow-auto relative z-0">
                     {mapApi === "GOAPI" ? (
                       data && data.position ? (
                         <div className="object-cover relative z-10">

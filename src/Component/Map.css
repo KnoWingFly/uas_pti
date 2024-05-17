@@ -1,5 +1,6 @@
 #map {
     height: 70vh;
     width: 90%;
+    z-index: auto;
   }
   
