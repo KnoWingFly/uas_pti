@@ -122,6 +122,7 @@ function Header({ isOpen, setSearchTerm, onSuggestionClick }) {
               className="p-2 backdrop-blur-md mb-16 rounded-full inline-flex border border-4 border-white items-center relative scale-100 opacity-100 px-5 pe-7"
             >
               <div className="absolute inset-0 bg-black opacity-50 rounded-full"></div>
+              
               <div className="relative z-10 flex items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -142,9 +143,11 @@ function Header({ isOpen, setSearchTerm, onSuggestionClick }) {
                     d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
                   />
                 </svg>
+
                 <span className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl overflow-hidden whitespace-nowrap text-overflow-ellipsis">
                   {places.length > 0 && places[currentPlaceIndex] && places[currentPlaceIndex].name}
                 </span>
+
               </div>
             </div>
           </div>

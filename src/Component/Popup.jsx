@@ -185,7 +185,7 @@ const Popup = ({
               {currentPage === 1 && (
                 <div>
 
-                  <motion.h2 
+                  <motion.h2
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.8 }}
@@ -204,7 +204,7 @@ const Popup = ({
                       className="text-start shadow-lg p-5 rounded-lg h-full w-full relative pb-10 min-w-fit">
 
                       <div className="absolute bottom-0 right-0 text-xs mb-2 font-semibold text-black px-3">
-                          {selectedPlace.review1.rating} ⭐
+                        {selectedPlace.review1.rating} ⭐
                       </div>
 
                       <motion.p
@@ -212,7 +212,7 @@ const Popup = ({
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ delay: 0.3, duration: 0.5 }}
                         className="text-xs md:text-lg text-gray-800 min-w-fit">
-                        
+
                         {review1}
 
                       </motion.p>
@@ -227,7 +227,7 @@ const Popup = ({
                       className="text-start shadow-lg p-5 rounded-lg h-full w-full relative pb-10 min-w-fit">
 
                       <div className="absolute bottom-0 right-0 text-xs mb-2 font-semibold text-black px-3">
-                          {selectedPlace.review2.rating} ⭐
+                        {selectedPlace.review2.rating} ⭐
                       </div>
 
                       <motion.p
@@ -235,7 +235,7 @@ const Popup = ({
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ delay: 0.3, duration: 0.5 }}
                         className="text-xs md:text-lg text-gray-800 min-w-fit">
-                        
+
                         {review2}
 
                       </motion.p>
@@ -250,7 +250,7 @@ const Popup = ({
                       className="text-start shadow-lg p-5 rounded-lg h-full w-full relative pb-10 col-span-2 min-w-fit">
 
                       <div className="absolute bottom-0 right-0 text-xs mb-2 font-semibold text-black px-3">
-                          {selectedPlace.review3.rating} ⭐
+                        {selectedPlace.review3.rating} ⭐
                       </div>
 
                       <motion.p
@@ -258,7 +258,7 @@ const Popup = ({
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ delay: 0.3, duration: 0.5 }}
                         className="text-xs md:text-lg text-gray-800 min-w-fit">
-                        
+
                         {review3}
 
                       </motion.p>
@@ -281,8 +281,8 @@ const Popup = ({
                   <div className="relative top-0 z-50 right-0 m-4 ms-0 flex space-x-4 justify-start">
                     <button
                       className={`px-3 py-2 rounded-md text-sm font-medium focus:outline-none ${mapApi === "GMAP"
-                      ? "bg-green-700 text-white hover:bg-green-600 hover:text-white"
-                      : "text-gray-700 bg-white hover:bg-green-600 hover:text-white"
+                        ? "bg-green-700 text-white hover:bg-green-600 hover:text-white"
+                        : "text-gray-700 bg-white hover:bg-green-600 hover:text-white"
                         }`}
                       onClick={() => setMapApi("GMAP")}
                     >
