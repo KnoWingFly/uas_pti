@@ -2,6 +2,7 @@
   "name": "uas",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://sumuttourism.fun/",
   "dependencies": {
     "@headlessui/react": "^1.7.19",
     "@heroicons/react": "^1.0.6",
