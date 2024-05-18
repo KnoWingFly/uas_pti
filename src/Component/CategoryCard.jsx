@@ -48,7 +48,7 @@ const CategoryCard = ({ searchTerm, language }) => {
               {categories.map((category, index) => (
                 <button
                   key={index}
-                  className={`px-2 py-1 md:px-4 md:py-2 rounded-md ${selectedCategory === category
+                  className={`px-2 py-1 md:px-4 md:py-2 rounded-md font-semibold ${selectedCategory === category
                       ? "transition ease-in-out delay-75 bg-green-700 text-white hover:-translate-y-0.5 hover:scale-110 hover:bg-green-600 hover:text-white duration-150"
                       : "transition ease-in-out delay-75 bg-gray-200 text-gray-800 hover:-translate-y-0.5 hover:scale-110 hover:bg-green-600 hover:text-white duration-150"
                     }`}
