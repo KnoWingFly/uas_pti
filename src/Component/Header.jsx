@@ -20,6 +20,19 @@ function Header({
   const textRef = useRef(null);
   const discoverRef = useRef(null);
 
+  const handleNext = () => {
+    const totalPages = 3;
+    if (currentPage < totalPages - 1) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const handlePrevious = () => {
+    if (currentPage > 0) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
   const nextPlace = useCallback(() => {
     setCurrentPlaceIndex((prevIndex) => (prevIndex + 1) % places.length);
     animateTransition();
@@ -228,6 +241,8 @@ function Header({
           setIsOpen={setIsOpen}
           currentPage={currentPage}
           selectedPlace={selectedPlace}
+          handleNext={handleNext}
+          handlePrevious={handlePrevious}
         />
       )}
     </div>
