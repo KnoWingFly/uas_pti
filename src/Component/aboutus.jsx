@@ -1,30 +1,27 @@
-import React, { useRef, useState } from 'react';
-// Import Swiper React components
+import React, { useRef, useState, useContext } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
-
 import './style.css';
-
 import stevjo from "../img/stevjo.jpeg";
 import fernando from "../img/fernando.jpg";
 import virya from "../img/virya.png";
 import fabian from "../img/fabian.jpg";
-// import required modules
 import { EffectCoverflow, Pagination } from 'swiper/modules';
 import Nav from "./Nav";
 import Footer from './Footer';
+import { LanguageContext } from "./LanguageContent"; 
 
 export default function App() {
     const [searchTerm, setSearchTerm] = useState('');
     const [isOpenNav, setIsOpenNav] = useState(false);
+    const { language, setLanguage } = useContext(LanguageContext);
+
     return (
         <><div className='flex flex-col min-h-screen'>
             <div>
-                <Nav isOpen={isOpenNav} setIsOpen={setIsOpenNav} />
+                <Nav isOpen={isOpenNav} setIsOpen={setIsOpenNav} language={language} setLanguage={setLanguage} />
             </div>
             <h1 className='text-center mt-10 text-5xl font-bold'>Our Team</h1>
 

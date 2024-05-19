@@ -42,7 +42,8 @@ const Home = () => {
     <div className="App bg-white min-h-screen text-white">
       <Nav isOpen={isOpenNav} setIsOpen={setIsOpenNav} language={language} setLanguage={setLanguage} />
       <Header 
-        isOpen={isOpenNav} 
+        isOpen={isOpenPopup} 
+        setIsOpen={setIsOpenPopup} 
         onSuggestionClick={handleSuggestionClick} 
         setSearchTerm={setSearchTerm} 
         language={language}
@@ -51,7 +52,7 @@ const Home = () => {
       <Footer />
       <Popup 
         isOpen={isOpenPopup} 
-        setIsOpen={setIsOpenPopup} 
+        setIsOpen={setIsOpenPopup} // Mengatur keadaan popup terbuka atau tertutup
         selectedPlace={selectedPlace} 
         currentPage={currentPage} 
         handleNext={handleNext} 

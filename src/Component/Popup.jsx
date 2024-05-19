@@ -54,6 +54,13 @@ const Popup = ({
     }
   }, [selectedPlace]);
 
+  useEffect(() => {
+    if (!isOpen) {
+      setData(null);
+      setIsLoading(false);
+    }
+  }, [isOpen]);
+
   const totalPage = 3;
 
   return isOpen && selectedPlace ? (
