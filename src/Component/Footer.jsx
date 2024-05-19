@@ -15,10 +15,10 @@ export default function Footer() {
                             <a href="/" className="hover:underline me-4 md:me-6 hover:text-green-600">Home</a>
                         </li>
                         <li>
-                            <a href="/category/" className="hover:text-green-600 hover:underline me-4 md:me-6">Category</a>
+                            <a href="/category" className="hover:text-green-600 hover:underline me-4 md:me-6">Category</a>
                         </li>
                         <li>
-                            <a href="/aboutus/" className="hover:text-green-600 hover:underline me-4 md:me-6">About Us</a>
+                            <a href="/aboutus" className="hover:text-green-600 hover:underline me-4 md:me-6">About Us</a>
                         </li>
                         <li>
                             <a target="_blank" href="https://github.com/KnoWingFly/uas_pti" className="hover:text-green-600 hover:underline">GitHub</a>

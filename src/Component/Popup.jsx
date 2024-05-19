@@ -218,7 +218,7 @@ const Popup = ({
                         initial={{ y: 20, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ delay: 0.3, duration: 0.5 }}
-                        className="text-lg sm:text-xl text-gray-800 min-w-fit">
+                        className="text-md sm:text-xl text-gray-800 min-w-fit">
 
                         {review1}
 
@@ -241,7 +241,7 @@ const Popup = ({
                         initial={{ y: 20, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ delay: 0.3, duration: 0.5 }}
-                        className="text-lg sm:text-xl text-gray-800 min-w-fit">
+                        className="text-md sm:text-xl text-gray-800 min-w-fit">
 
                         {review2}
 
@@ -264,7 +264,7 @@ const Popup = ({
                         initial={{ y: 20, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ delay: 0.3, duration: 0.5 }}
-                        className="text-lg sm:text-xl text-gray-800 min-w-fit">
+                        className="text-md sm:text-xl text-gray-800 min-w-fit">
 
                         {review3}
 
