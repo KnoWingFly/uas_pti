@@ -25,7 +25,7 @@ const GoogleMapComponent = ({ placeName }) => {
     <div style={{ height: "40vh", width: "100%" }}>
       {isMapLoading && (
         <div className="flex justify-center items-center h-full">
-          <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-indigo-500"></div>
+          <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-green-600"></div>
         </div>
       )}
       <iframe
