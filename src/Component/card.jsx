@@ -35,7 +35,7 @@ const Card = ({ searchTerm, language }) => {
             .filter((place) =>
               place.name.toLowerCase().includes(searchTerm.toLowerCase())
             )
-            
+            .slice(0, 8) // Limiting to first 8 places
             .map((place, index) => (
               <motion.div
                 key={index}

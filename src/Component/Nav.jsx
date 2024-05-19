@@ -17,8 +17,8 @@ function Nav({ isOpen, setIsOpen, setLanguage, language }) {
 
   const navigation = [
     { name: "Home", href: "/" },
-    { name: "Category", href: "/category/" },
-    { name: "About Us", href: "/aboutus/" },
+    { name: "Category", href: "/category" },
+    { name: "About Us", href: "/aboutus" },
   ];
 
   return (

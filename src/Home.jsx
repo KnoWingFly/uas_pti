@@ -48,7 +48,8 @@ const Home = () => {
         setSearchTerm={setSearchTerm} 
         language={language}
       />
-      <Card searchTerm={searchTerm} language={language} />
+      <Card searchTerm={searchTerm} language={language} maxCards={8}/>
+      <div className="mt-16" />
       <Footer />
       <Popup 
         isOpen={isOpenPopup} 
