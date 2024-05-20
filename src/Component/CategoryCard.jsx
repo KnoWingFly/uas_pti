@@ -85,7 +85,7 @@ const CategoryCard = ({ searchTerm, language }) => {
 
                     <div className="absolute inset-x-0 top-0 flex justify-center items-center cursor-pointer group">
                       <div className="group-hover:bg-gradient-to-t from-transparent to-black h-full w-full object-cover absolute transition-all duration-300 ease-in-out"></div>
-                      <p className="opacity-0 group-hover:opacity-100 duration-300 text-white font-semibold p-5 text-center z-10 text-md sm:text-lg md:text-sm">
+                      <p className="opacity-0 group-hover:opacity-100 duration-300 text-white font-semibold p-5 text-center z-10 text-lg sm:text-xl">
                         {place.shortDesc}
                       </p>
                     </div>
