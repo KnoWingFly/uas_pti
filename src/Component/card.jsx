@@ -40,7 +40,7 @@ const Card = ({ searchTerm, language }) => {
               <motion.div
                 key={index}
                 whileHover={{ scale: 1.05 }}
-                className="relative w-50 h-50 md:h-60 lg:h-70 rounded-lg shadow-lg m-2 overflow-hidden group bg-black"
+                className="relative w-50 h-50 md:h-60 lg:h-70 rounded-lg shadow-lg m-2 overflow-hidden group bg-black z-0"
                 onClick={() => handleClick(place)}
               >
                 <img
